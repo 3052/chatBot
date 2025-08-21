@@ -1,0 +1,1574 @@
+{
+  "data": {
+    "models": [
+      {
+        "slug": "deepseek/deepseek-v3.1-base",
+        "hf_slug": "deepseek-ai/DeepSeek-V3.1-Base",
+        "updated_at": "2025-08-20T23:24:38.053805+00:00",
+        "created_at": "2025-08-20T21:56:57.365821+00:00",
+        "hf_updated_at": null,
+        "name": "DeepSeek: DeepSeek V3.1 Base",
+        "short_name": "DeepSeek V3.1 Base",
+        "author": "deepseek",
+        "description": "This is a base model, trained only for raw next-token prediction. Unlike instruct/chat models, it has not been fine-tuned to follow user instructions. Prompts need to be written more like training text or examples rather than simple requests (e.g., “Translate the following sentence…” instead of just “Translate this”).\n\nDeepSeek-V3.1 Base is a 671B parameter open Mixture-of-Experts (MoE) language model with 37B active parameters per forward pass and a context length of 128K tokens. Trained on 14.8T tokens using FP8 mixed precision, it achieves high training efficiency and stability, with strong performance across language, reasoning, math, and coding tasks. \n",
+        "model_version_group_id": null,
+        "context_length": 163840,
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "has_text_output": true,
+        "group": "DeepSeek",
+        "instruct_type": "none",
+        "default_system": null,
+        "default_stops": [],
+        "hidden": false,
+        "router": null,
+        "warning_message": "This is a base model trained for raw text prediction, not instruction-following. Prompts should be written as examples, not simple requests.",
+        "permaslug": "deepseek/deepseek-v3.1-base",
+        "reasoning_config": null,
+        "features": null,
+        "endpoint": {
+          "id": "1164cd79-2006-4d21-adab-4ee6967328ea",
+          "name": "Chutes | deepseek/deepseek-v3.1-base",
+          "context_length": 163840,
+          "model": {
+            "slug": "deepseek/deepseek-v3.1-base",
+            "hf_slug": "deepseek-ai/DeepSeek-V3.1-Base",
+            "updated_at": "2025-08-20T23:24:38.053805+00:00",
+            "created_at": "2025-08-20T21:56:57.365821+00:00",
+            "hf_updated_at": null,
+            "name": "DeepSeek: DeepSeek V3.1 Base",
+            "short_name": "DeepSeek V3.1 Base",
+            "author": "deepseek",
+            "description": "This is a base model, trained only for raw next-token prediction. Unlike instruct/chat models, it has not been fine-tuned to follow user instructions. Prompts need to be written more like training text or examples rather than simple requests (e.g., “Translate the following sentence…” instead of just “Translate this”).\n\nDeepSeek-V3.1 Base is a 671B parameter open Mixture-of-Experts (MoE) language model with 37B active parameters per forward pass and a context length of 128K tokens. Trained on 14.8T tokens using FP8 mixed precision, it achieves high training efficiency and stability, with strong performance across language, reasoning, math, and coding tasks. \n",
+            "model_version_group_id": null,
+            "context_length": 163840,
+            "input_modalities": [
+              "text"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "has_text_output": true,
+            "group": "DeepSeek",
+            "instruct_type": "none",
+            "default_system": null,
+            "default_stops": [],
+            "hidden": false,
+            "router": null,
+            "warning_message": "This is a base model trained for raw text prediction, not instruction-following. Prompts should be written as examples, not simple requests.",
+            "permaslug": "deepseek/deepseek-v3.1-base",
+            "reasoning_config": null,
+            "features": null
+          },
+          "model_variant_slug": "deepseek/deepseek-v3.1-base",
+          "model_variant_permaslug": "deepseek/deepseek-v3.1-base",
+          "adapter_name": "ChutesAdapter",
+          "provider_name": "Chutes",
+          "provider_info": {
+            "name": "Chutes",
+            "displayName": "Chutes",
+            "slug": "chutes",
+            "baseUrl": "https://llm.chutes.ai/v1",
+            "dataPolicy": {
+              "training": true,
+              "retainsPrompts": true,
+              "canPublish": false,
+              "termsOfServiceURL": "https://chutes.ai/tos"
+            },
+            "headquarters": "US",
+            "hasChatCompletions": true,
+            "hasCompletions": true,
+            "isAbortable": true,
+            "moderationRequired": false,
+            "editors": [
+              "{}"
+            ],
+            "owners": [
+              "{}"
+            ],
+            "adapterName": "ChutesAdapter",
+            "isMultipartSupported": true,
+            "statusPageUrl": null,
+            "byokEnabled": true,
+            "icon": {
+              "url": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chutes.ai/&size=256"
+            },
+            "ignoredProviderModels": [
+              "openbmb/MiniCPM4-8B",
+              "agentica-org/DeepSWE-Preview",
+              "moonshotai/Kimi-K2-Instruct-tools",
+              "internlm/Intern-S1",
+              "TheDrummer/Gemmasutra-Pro-27B-v1.1",
+              "all-hands/openhands-lm-32b-v0.1-ep3",
+              "TheDrummer/Tunguska-39B-v1",
+              "stepfun-ai/step3"
+            ]
+          },
+          "provider_display_name": "Chutes",
+          "provider_slug": "chutes",
+          "provider_model_id": "deepseek-ai/DeepSeek-V3.1-Base",
+          "quantization": null,
+          "variant": "standard",
+          "is_free": false,
+          "can_abort": true,
+          "max_prompt_tokens": null,
+          "max_completion_tokens": null,
+          "max_prompt_images": null,
+          "max_tokens_per_image": null,
+          "supported_parameters": [
+            "max_tokens",
+            "temperature",
+            "top_p",
+            "stop",
+            "frequency_penalty",
+            "presence_penalty",
+            "seed",
+            "top_k",
+            "min_p",
+            "repetition_penalty",
+            "logprobs",
+            "logit_bias",
+            "top_logprobs"
+          ],
+          "is_byok": false,
+          "moderation_required": false,
+          "data_policy": {
+            "training": true,
+            "retainsPrompts": true,
+            "canPublish": false,
+            "termsOfServiceURL": "https://chutes.ai/tos"
+          },
+          "pricing": {
+            "prompt": "0.0000002",
+            "completion": "0.0000008",
+            "image": "0",
+            "audio": "0",
+            "request": "0",
+            "web_search": "0",
+            "internal_reasoning": "0",
+            "discount": 0
+          },
+          "variable_pricings": [],
+          "is_hidden": false,
+          "is_deranked": false,
+          "is_disabled": false,
+          "supports_tool_parameters": false,
+          "supports_reasoning": false,
+          "supports_multipart": true,
+          "limit_rpm": null,
+          "limit_rpd": null,
+          "limit_rpm_cf": null,
+          "has_completions": true,
+          "has_chat_completions": false,
+          "features": {
+            "supports_input_audio": false,
+            "supports_tool_choice": {
+              "literal_none": true,
+              "literal_auto": true,
+              "literal_required": true,
+              "type_function": true
+            },
+            "supported_parameters": {}
+          },
+          "provider_region": null
+        }
+      }
+    ],
+    "categories": {
+      "anthropic/claude-4-sonnet-20250522": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "programming",
+          "count": 15402,
+          "total_prompt_tokens": 705166410,
+          "total_completion_tokens": 13338687,
+          "volume": 944.9115633360001,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "technology",
+          "count": 6479,
+          "total_prompt_tokens": 150493517,
+          "total_completion_tokens": 4430994,
+          "volume": 371.781405512,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "academia",
+          "count": 621,
+          "total_prompt_tokens": 12232122,
+          "total_completion_tokens": 395906,
+          "volume": 39.9399705375,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "finance",
+          "count": 831,
+          "total_prompt_tokens": 12880647,
+          "total_completion_tokens": 480709,
+          "volume": 37.169584349999994,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "science",
+          "count": 2150,
+          "total_prompt_tokens": 35047062,
+          "total_completion_tokens": 1150343,
+          "volume": 106.75359430649999,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "health",
+          "count": 326,
+          "total_prompt_tokens": 5063684,
+          "total_completion_tokens": 127747,
+          "volume": 17.89102236,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "marketing",
+          "count": 319,
+          "total_prompt_tokens": 2512861,
+          "total_completion_tokens": 119283,
+          "volume": 10.813460257500001,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "legal",
+          "count": 193,
+          "total_prompt_tokens": 1559584,
+          "total_completion_tokens": 80516,
+          "volume": 8.612486050000001,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-4-sonnet-20250522",
+          "category": "marketing/seo",
+          "count": 91,
+          "total_prompt_tokens": 702449,
+          "total_completion_tokens": 42871,
+          "volume": 2.24214514,
+          "rank": 10
+        }
+      ],
+      "openai/gpt-5-mini-2025-08-07": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-5-mini-2025-08-07",
+          "category": "legal",
+          "count": 4567,
+          "total_prompt_tokens": 30195004,
+          "total_completion_tokens": 627905,
+          "volume": 11.263516802,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-5-mini-2025-08-07",
+          "category": "academia",
+          "count": 832,
+          "total_prompt_tokens": 3306966,
+          "total_completion_tokens": 236307,
+          "volume": 1.2194339045,
+          "rank": 10
+        }
+      ],
+      "google/gemini-2.0-flash-001": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "translation",
+          "count": 51764,
+          "total_prompt_tokens": 49282281,
+          "total_completion_tokens": 12464006,
+          "volume": 1.4759154136000001,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "trivia",
+          "count": 2199,
+          "total_prompt_tokens": 4072660,
+          "total_completion_tokens": 173495,
+          "volume": 0.49608236240000003,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "finance",
+          "count": 6123,
+          "total_prompt_tokens": 21950239,
+          "total_completion_tokens": 1049981,
+          "volume": 3.585140619,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "roleplay",
+          "count": 47378,
+          "total_prompt_tokens": 208878971,
+          "total_completion_tokens": 11783215,
+          "volume": 13.4369682115,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "academia",
+          "count": 4156,
+          "total_prompt_tokens": 5547660,
+          "total_completion_tokens": 991935,
+          "volume": 1.1595472485,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "science",
+          "count": 4820,
+          "total_prompt_tokens": 14713231,
+          "total_completion_tokens": 1028428,
+          "volume": 2.0892756466,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "legal",
+          "count": 1242,
+          "total_prompt_tokens": 2408487,
+          "total_completion_tokens": 129588,
+          "volume": 0.349432654,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "technology",
+          "count": 8809,
+          "total_prompt_tokens": 22605819,
+          "total_completion_tokens": 1502464,
+          "volume": 3.2956199615,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "health",
+          "count": 1764,
+          "total_prompt_tokens": 2499027,
+          "total_completion_tokens": 219571,
+          "volume": 0.442219606,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.0-flash-001",
+          "category": "marketing",
+          "count": 990,
+          "total_prompt_tokens": 1200760,
+          "total_completion_tokens": 295593,
+          "volume": 0.314622458,
+          "rank": 8
+        }
+      ],
+      "openai/gpt-oss-120b": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "health",
+          "count": 6330,
+          "total_prompt_tokens": 12670735,
+          "total_completion_tokens": 8008232,
+          "volume": 7.015496461695499,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "legal",
+          "count": 2006,
+          "total_prompt_tokens": 4218299,
+          "total_completion_tokens": 3103151,
+          "volume": 2.012804734772691,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "science",
+          "count": 3970,
+          "total_prompt_tokens": 9861100,
+          "total_completion_tokens": 2880268,
+          "volume": 3.266954500251307,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "academia",
+          "count": 1232,
+          "total_prompt_tokens": 2938967,
+          "total_completion_tokens": 1998530,
+          "volume": 1.8373950931209009,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "finance",
+          "count": 503,
+          "total_prompt_tokens": 3385992,
+          "total_completion_tokens": 745559,
+          "volume": 0.9139273293248552,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-120b",
+          "category": "translation",
+          "count": 4030,
+          "total_prompt_tokens": 1711635,
+          "total_completion_tokens": 1071992,
+          "volume": 0.8370023887460903,
+          "rank": 8
+        }
+      ],
+      "google/gemini-2.5-flash": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "marketing",
+          "count": 3009,
+          "total_prompt_tokens": 9285992,
+          "total_completion_tokens": 457215,
+          "volume": 3.35397521875,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "academia",
+          "count": 5734,
+          "total_prompt_tokens": 22772785,
+          "total_completion_tokens": 2007654,
+          "volume": 10.853946457000001,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "science",
+          "count": 17195,
+          "total_prompt_tokens": 50401241,
+          "total_completion_tokens": 4234847,
+          "volume": 25.495498894615,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "technology",
+          "count": 13648,
+          "total_prompt_tokens": 81174222,
+          "total_completion_tokens": 4726926,
+          "volume": 30.136985056485,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "trivia",
+          "count": 4945,
+          "total_prompt_tokens": 2521421,
+          "total_completion_tokens": 85790,
+          "volume": 0.945732516,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "finance",
+          "count": 2221,
+          "total_prompt_tokens": 12991607,
+          "total_completion_tokens": 767044,
+          "volume": 5.287470536515,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "health",
+          "count": 2848,
+          "total_prompt_tokens": 14870055,
+          "total_completion_tokens": 1508668,
+          "volume": 7.067494063,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "legal",
+          "count": 2085,
+          "total_prompt_tokens": 18314218,
+          "total_completion_tokens": 567189,
+          "volume": 6.5602523202,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "marketing/seo",
+          "count": 951,
+          "total_prompt_tokens": 4236889,
+          "total_completion_tokens": 825638,
+          "volume": 0.7808769422499999,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "translation",
+          "count": 5675,
+          "total_prompt_tokens": 4293263,
+          "total_completion_tokens": 657447,
+          "volume": 2.8365569685,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "programming",
+          "count": 10282,
+          "total_prompt_tokens": 90516423,
+          "total_completion_tokens": 3106237,
+          "volume": 27.59927170815,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash",
+          "category": "roleplay",
+          "count": 22092,
+          "total_prompt_tokens": 70451564,
+          "total_completion_tokens": 3581041,
+          "volume": 28.6153961214,
+          "rank": 7
+        }
+      ],
+      "deepseek/deepseek-chat-v3-0324": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "roleplay",
+          "count": 76298,
+          "total_prompt_tokens": 558781705,
+          "total_completion_tokens": 22040342,
+          "volume": 86.86739707213982,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "science",
+          "count": 9521,
+          "total_prompt_tokens": 43293588,
+          "total_completion_tokens": 2706969,
+          "volume": 9.939438855323997,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "trivia",
+          "count": 772,
+          "total_prompt_tokens": 1051147,
+          "total_completion_tokens": 54581,
+          "volume": 0.2806064880826672,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "marketing",
+          "count": 705,
+          "total_prompt_tokens": 2010030,
+          "total_completion_tokens": 206817,
+          "volume": 0.28524023674084,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "translation",
+          "count": 2148,
+          "total_prompt_tokens": 2293082,
+          "total_completion_tokens": 423958,
+          "volume": 1.124947697244512,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-chat-v3-0324",
+          "category": "finance",
+          "count": 1285,
+          "total_prompt_tokens": 3363020,
+          "total_completion_tokens": 297652,
+          "volume": 1.4380645570327972,
+          "rank": 10
+        }
+      ],
+      "deepseek/deepseek-r1": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1",
+          "category": "marketing/seo",
+          "count": 1267,
+          "total_prompt_tokens": 4284950,
+          "total_completion_tokens": 2182800,
+          "volume": 0.0177766,
+          "rank": 1
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1",
+          "category": "academia",
+          "count": 1470,
+          "total_prompt_tokens": 4781777,
+          "total_completion_tokens": 2467173,
+          "volume": 0.1913138485,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1",
+          "category": "roleplay",
+          "count": 9203,
+          "total_prompt_tokens": 74367483,
+          "total_completion_tokens": 9073416,
+          "volume": 4.5736123624000005,
+          "rank": 6
+        }
+      ],
+      "qwen/qwen3-coder-480b-a35b-07-25": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen3-coder-480b-a35b-07-25",
+          "category": "programming",
+          "count": 8848,
+          "total_prompt_tokens": 491350863,
+          "total_completion_tokens": 4323526,
+          "volume": 131.07603036999998,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen3-coder-480b-a35b-07-25",
+          "category": "technology",
+          "count": 868,
+          "total_prompt_tokens": 18647863,
+          "total_completion_tokens": 472469,
+          "volume": 6.6204519331,
+          "rank": 8
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen3-coder-480b-a35b-07-25",
+          "category": "science",
+          "count": 341,
+          "total_prompt_tokens": 11103193,
+          "total_completion_tokens": 251996,
+          "volume": 6.4300134074,
+          "rank": 8
+        }
+      ],
+      "deepseek/deepseek-r1-0528": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1-0528",
+          "category": "roleplay",
+          "count": 17319,
+          "total_prompt_tokens": 231817402,
+          "total_completion_tokens": 17432132,
+          "volume": 16.533656262584024,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1-0528",
+          "category": "finance",
+          "count": 509,
+          "total_prompt_tokens": 5642810,
+          "total_completion_tokens": 814974,
+          "volume": 2.3689683962520895,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "deepseek/deepseek-r1-0528",
+          "category": "science",
+          "count": 1139,
+          "total_prompt_tokens": 8535535,
+          "total_completion_tokens": 1474974,
+          "volume": 2.897830114288542,
+          "rank": 10
+        }
+      ],
+      "google/gemini-flash-1.5-8b": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-flash-1.5-8b",
+          "category": "translation",
+          "count": 17614,
+          "total_prompt_tokens": 10976013,
+          "total_completion_tokens": 980959,
+          "volume": 0.568147675875,
+          "rank": 2
+        }
+      ],
+      "openai/gpt-4o-mini": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4o-mini",
+          "category": "marketing",
+          "count": 4599,
+          "total_prompt_tokens": 4048137,
+          "total_completion_tokens": 121915,
+          "volume": 0.788049281,
+          "rank": 2
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4o-mini",
+          "category": "health",
+          "count": 2145,
+          "total_prompt_tokens": 4856508,
+          "total_completion_tokens": 493127,
+          "volume": 1.0334673215,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4o-mini",
+          "category": "finance",
+          "count": 10726,
+          "total_prompt_tokens": 6412793,
+          "total_completion_tokens": 329806,
+          "volume": 1.10663087,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4o-mini",
+          "category": "marketing/seo",
+          "count": 1152,
+          "total_prompt_tokens": 1204705,
+          "total_completion_tokens": 110443,
+          "volume": 0.174318174,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4o-mini",
+          "category": "trivia",
+          "count": 1008,
+          "total_prompt_tokens": 636332,
+          "total_completion_tokens": 70264,
+          "volume": 0.14309382450000002,
+          "rank": 7
+        }
+      ],
+      "openai/gpt-4.1-2025-04-14": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-2025-04-14",
+          "category": "technology",
+          "count": 2808,
+          "total_prompt_tokens": 33020295,
+          "total_completion_tokens": 760855,
+          "volume": 40.67533522,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-2025-04-14",
+          "category": "marketing",
+          "count": 429,
+          "total_prompt_tokens": 3568513,
+          "total_completion_tokens": 55203,
+          "volume": 4.31281538,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-2025-04-14",
+          "category": "health",
+          "count": 516,
+          "total_prompt_tokens": 2967028,
+          "total_completion_tokens": 168238,
+          "volume": 4.25456958,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-2025-04-14",
+          "category": "marketing/seo",
+          "count": 137,
+          "total_prompt_tokens": 1018949,
+          "total_completion_tokens": 54601,
+          "volume": 2.37672768,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-2025-04-14",
+          "category": "legal",
+          "count": 191,
+          "total_prompt_tokens": 1200514,
+          "total_completion_tokens": 65113,
+          "volume": 2.80427668,
+          "rank": 10
+        }
+      ],
+      "google/gemma-3-27b-it": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemma-3-27b-it",
+          "category": "trivia",
+          "count": 1946,
+          "total_prompt_tokens": 955300,
+          "total_completion_tokens": 457100,
+          "volume": 0.2195410786512,
+          "rank": 3
+        }
+      ],
+      "moonshotai/kimi-k2": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "moonshotai/kimi-k2",
+          "category": "programming",
+          "count": 8170,
+          "total_prompt_tokens": 186766656,
+          "total_completion_tokens": 4703436,
+          "volume": 122.47825897416752,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "moonshotai/kimi-k2",
+          "category": "science",
+          "count": 1528,
+          "total_prompt_tokens": 15315854,
+          "total_completion_tokens": 645647,
+          "volume": 13.148366518851919,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "moonshotai/kimi-k2",
+          "category": "technology",
+          "count": 2112,
+          "total_prompt_tokens": 19151142,
+          "total_completion_tokens": 658669,
+          "volume": 11.89849731955296,
+          "rank": 7
+        }
+      ],
+      "google/gemini-2.5-flash-lite-preview-06-17": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite-preview-06-17",
+          "category": "marketing/seo",
+          "count": 596,
+          "total_prompt_tokens": 1405622,
+          "total_completion_tokens": 1291499,
+          "volume": 0.629524771,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite-preview-06-17",
+          "category": "translation",
+          "count": 3060,
+          "total_prompt_tokens": 2838768,
+          "total_completion_tokens": 1183789,
+          "volume": 0.658699351,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite-preview-06-17",
+          "category": "legal",
+          "count": 3002,
+          "total_prompt_tokens": 1761059,
+          "total_completion_tokens": 192056,
+          "volume": 0.255185756,
+          "rank": 8
+        }
+      ],
+      "google/gemini-flash-1.5": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-flash-1.5",
+          "category": "translation",
+          "count": 18902,
+          "total_prompt_tokens": 7348645,
+          "total_completion_tokens": 4109853,
+          "volume": 0.125834944,
+          "rank": 3
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-flash-1.5",
+          "category": "trivia",
+          "count": 811,
+          "total_prompt_tokens": 474087,
+          "total_completion_tokens": 80749,
+          "volume": 0.085293671,
+          "rank": 8
+        }
+      ],
+      "google/gemini-2.5-pro": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "technology",
+          "count": 2803,
+          "total_prompt_tokens": 26461855,
+          "total_completion_tokens": 3947427,
+          "volume": 109.4129585606,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "programming",
+          "count": 2428,
+          "total_prompt_tokens": 91146603,
+          "total_completion_tokens": 3182352,
+          "volume": 182.12623658975,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "health",
+          "count": 569,
+          "total_prompt_tokens": 2943438,
+          "total_completion_tokens": 563139,
+          "volume": 10.8258940377,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "legal",
+          "count": 317,
+          "total_prompt_tokens": 3245886,
+          "total_completion_tokens": 304627,
+          "volume": 11.0722257295,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "roleplay",
+          "count": 9717,
+          "total_prompt_tokens": 81739434,
+          "total_completion_tokens": 9828516,
+          "volume": 216.0568947384,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "translation",
+          "count": 900,
+          "total_prompt_tokens": 1898052,
+          "total_completion_tokens": 1042807,
+          "volume": 21.189100097500003,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "academia",
+          "count": 540,
+          "total_prompt_tokens": 3950137,
+          "total_completion_tokens": 819325,
+          "volume": 22.968241510000002,
+          "rank": 8
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "marketing/seo",
+          "count": 62,
+          "total_prompt_tokens": 812347,
+          "total_completion_tokens": 111622,
+          "volume": 3.0974628,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "science",
+          "count": 1255,
+          "total_prompt_tokens": 9142224,
+          "total_completion_tokens": 1501385,
+          "volume": 42.311372543,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "marketing",
+          "count": 134,
+          "total_prompt_tokens": 1000533,
+          "total_completion_tokens": 132804,
+          "volume": 3.5703648825,
+          "rank": 10
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-pro",
+          "category": "trivia",
+          "count": 232,
+          "total_prompt_tokens": 230893,
+          "total_completion_tokens": 124417,
+          "volume": 2.671109495,
+          "rank": 10
+        }
+      ],
+      "google/gemma-3n-e4b-it": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemma-3n-e4b-it",
+          "category": "legal",
+          "count": 2064,
+          "total_prompt_tokens": 3400550,
+          "total_completion_tokens": 1765200,
+          "volume": 0.14903828,
+          "rank": 4
+        }
+      ],
+      "meta-llama/llama-3.1-8b-instruct": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "meta-llama/llama-3.1-8b-instruct",
+          "category": "trivia",
+          "count": 2214,
+          "total_prompt_tokens": 1322948,
+          "total_completion_tokens": 32719,
+          "volume": 0.02884590135,
+          "rank": 4
+        }
+      ],
+      "meta-llama/llama-3.3-70b-instruct": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "meta-llama/llama-3.3-70b-instruct",
+          "category": "marketing",
+          "count": 2918,
+          "total_prompt_tokens": 2357239,
+          "total_completion_tokens": 282769,
+          "volume": 0.21631358042999999,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "meta-llama/llama-3.3-70b-instruct",
+          "category": "trivia",
+          "count": 938,
+          "total_prompt_tokens": 693904,
+          "total_completion_tokens": 75013,
+          "volume": 0.1004870913,
+          "rank": 6
+        }
+      ],
+      "mistralai/mistral-nemo": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "mistralai/mistral-nemo",
+          "category": "roleplay",
+          "count": 77929,
+          "total_prompt_tokens": 118409901,
+          "total_completion_tokens": 15711437,
+          "volume": 3.241729865834744,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "mistralai/mistral-nemo",
+          "category": "trivia",
+          "count": 612,
+          "total_prompt_tokens": 361365,
+          "total_completion_tokens": 59951,
+          "volume": 0.012479296975168,
+          "rank": 9
+        }
+      ],
+      "openai/gpt-5-2025-08-07": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-5-2025-08-07",
+          "category": "programming",
+          "count": 2432,
+          "total_prompt_tokens": 97597369,
+          "total_completion_tokens": 1556549,
+          "volume": 12.083269255000001,
+          "rank": 4
+        }
+      ],
+      "qwen/qwen-turbo-2024-11-01": [
+        {
+          "id": 0,
+          "date": "2025-08-18",
+          "model": "qwen/qwen-turbo-2024-11-01",
+          "category": "marketing/seo",
+          "count": 186,
+          "total_prompt_tokens": 2029200,
+          "total_completion_tokens": 650,
+          "volume": 0.12413115000000001,
+          "rank": 4
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen-turbo-2024-11-01",
+          "category": "marketing",
+          "count": 222,
+          "total_prompt_tokens": 2224700,
+          "total_completion_tokens": 8750,
+          "volume": 0.13636509,
+          "rank": 6
+        }
+      ],
+      "qwen/qwen3-32b-04-28": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen3-32b-04-28",
+          "category": "finance",
+          "count": 766,
+          "total_prompt_tokens": 5589962,
+          "total_completion_tokens": 921103,
+          "volume": 3.03512226016868,
+          "rank": 5
+        }
+      ],
+      "google/gemini-2.5-flash-lite": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite",
+          "category": "translation",
+          "count": 3867,
+          "total_prompt_tokens": 3738565,
+          "total_completion_tokens": 872512,
+          "volume": 0.647374324,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite",
+          "category": "academia",
+          "count": 2490,
+          "total_prompt_tokens": 4535152,
+          "total_completion_tokens": 1120746,
+          "volume": 0.6933380815,
+          "rank": 6
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite",
+          "category": "health",
+          "count": 5157,
+          "total_prompt_tokens": 2305802,
+          "total_completion_tokens": 215904,
+          "volume": 0.361520008,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite",
+          "category": "technology",
+          "count": 7742,
+          "total_prompt_tokens": 15331578,
+          "total_completion_tokens": 2090035,
+          "volume": 3.092797003,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "google/gemini-2.5-flash-lite",
+          "category": "roleplay",
+          "count": 9761,
+          "total_prompt_tokens": 26503463,
+          "total_completion_tokens": 1382912,
+          "volume": 2.7329348873440003,
+          "rank": 10
+        }
+      ],
+      "openai/gpt-4.1-mini-2025-04-14": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "marketing/seo",
+          "count": 259,
+          "total_prompt_tokens": 1735866,
+          "total_completion_tokens": 152762,
+          "volume": 0.520003692,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "science",
+          "count": 2594,
+          "total_prompt_tokens": 11134166,
+          "total_completion_tokens": 632589,
+          "volume": 3.168083524,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "legal",
+          "count": 365,
+          "total_prompt_tokens": 1878376,
+          "total_completion_tokens": 132889,
+          "volume": 0.7686835320000001,
+          "rank": 7
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "finance",
+          "count": 603,
+          "total_prompt_tokens": 3905228,
+          "total_completion_tokens": 155741,
+          "volume": 0.871547184,
+          "rank": 8
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "marketing",
+          "count": 222,
+          "total_prompt_tokens": 1174726,
+          "total_completion_tokens": 38764,
+          "volume": 0.323879444,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-mini-2025-04-14",
+          "category": "technology",
+          "count": 3722,
+          "total_prompt_tokens": 15735079,
+          "total_completion_tokens": 612921,
+          "volume": 4.925153396,
+          "rank": 10
+        }
+      ],
+      "x-ai/grok-4-07-09": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "x-ai/grok-4-07-09",
+          "category": "technology",
+          "count": 1385,
+          "total_prompt_tokens": 26888147,
+          "total_completion_tokens": 496329,
+          "volume": 71.8818079225,
+          "rank": 5
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "x-ai/grok-4-07-09",
+          "category": "programming",
+          "count": 2016,
+          "total_prompt_tokens": 55968320,
+          "total_completion_tokens": 811806,
+          "volume": 121.4936230375,
+          "rank": 10
+        }
+      ],
+      "anthropic/claude-3.5-sonnet": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-3.5-sonnet",
+          "category": "academia",
+          "count": 396,
+          "total_prompt_tokens": 6118486,
+          "total_completion_tokens": 253081,
+          "volume": 3.07747596,
+          "rank": 5
+        }
+      ],
+      "z-ai/glm-4.5-air": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "z-ai/glm-4.5-air",
+          "category": "programming",
+          "count": 1903,
+          "total_prompt_tokens": 80518251,
+          "total_completion_tokens": 999957,
+          "volume": 1.0977581052,
+          "rank": 7
+        }
+      ],
+      "tngtech/deepseek-r1t2-chimera": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "tngtech/deepseek-r1t2-chimera",
+          "category": "roleplay",
+          "count": 4811,
+          "total_prompt_tokens": 50852565,
+          "total_completion_tokens": 4432693,
+          "volume": 0.1,
+          "rank": 8
+        }
+      ],
+      "openai/gpt-oss-20b": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-oss-20b",
+          "category": "marketing/seo",
+          "count": 150,
+          "total_prompt_tokens": 980850,
+          "total_completion_tokens": 55450,
+          "volume": 0.055347105,
+          "rank": 8
+        }
+      ],
+      "qwen/qwen3-235b-a22b-07-25": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "qwen/qwen3-235b-a22b-07-25",
+          "category": "health",
+          "count": 503,
+          "total_prompt_tokens": 2530424,
+          "total_completion_tokens": 109678,
+          "volume": 0.46839235860413636,
+          "rank": 8
+        }
+      ],
+      "anthropic/claude-3-7-sonnet-20250219": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-3-7-sonnet-20250219",
+          "category": "programming",
+          "count": 2689,
+          "total_prompt_tokens": 57688072,
+          "total_completion_tokens": 1750852,
+          "volume": 98.614274856,
+          "rank": 8
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-3-7-sonnet-20250219",
+          "category": "roleplay",
+          "count": 4868,
+          "total_prompt_tokens": 43033023,
+          "total_completion_tokens": 2251440,
+          "volume": 169.1560102275,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-3-7-sonnet-20250219",
+          "category": "finance",
+          "count": 281,
+          "total_prompt_tokens": 3712523,
+          "total_completion_tokens": 322906,
+          "volume": 15.16801677,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "anthropic/claude-3-7-sonnet-20250219",
+          "category": "academia",
+          "count": 542,
+          "total_prompt_tokens": 3545690,
+          "total_completion_tokens": 529637,
+          "volume": 19.471305672499998,
+          "rank": 9
+        }
+      ],
+      "z-ai/glm-4.5": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "z-ai/glm-4.5",
+          "category": "programming",
+          "count": 3814,
+          "total_prompt_tokens": 57076554,
+          "total_completion_tokens": 1863532,
+          "volume": 17.874055563899017,
+          "rank": 9
+        },
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "z-ai/glm-4.5",
+          "category": "translation",
+          "count": 559,
+          "total_prompt_tokens": 1400884,
+          "total_completion_tokens": 1112638,
+          "volume": 0.24160109460031998,
+          "rank": 10
+        }
+      ],
+      "openai/gpt-4.1-nano-2025-04-14": [
+        {
+          "id": 0,
+          "date": "2025-08-20",
+          "model": "openai/gpt-4.1-nano-2025-04-14",
+          "category": "health",
+          "count": 835,
+          "total_prompt_tokens": 2121726,
+          "total_completion_tokens": 168879,
+          "volume": 0.246307252,
+          "rank": 10
+        }
+      ]
+    }
+  }
+}
