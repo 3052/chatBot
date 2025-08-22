@@ -2,6 +2,8 @@ package chatBot
 
 import "net/http"
 
+type model struct{}
+
 func find() (*http.Response, error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
