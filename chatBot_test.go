@@ -1,22 +1,18 @@
 package chatBot
 
 import (
-   "os"
+   "fmt"
+   "log"
    "testing"
 )
 
 func Test(t *testing.T) {
-   resp, err := find()
+   models, err := get_models()
    if err != nil {
       t.Fatal(err)
    }
-   file, err := os.Create("chatBot.json")
-   if err != nil {
-      t.Fatal(err)
+   for _, modelVar := range models {
+      fmt.Printf("%+v\n", modelVar)
    }
-   defer file.Close()
-   _, err = file.ReadFrom(resp.Body)
-   if err != nil {
-      t.Fatal(err)
-   }
+   log.Print(len(models))
 }
