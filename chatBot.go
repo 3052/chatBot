@@ -12,7 +12,9 @@ type model struct {
    Slug string
 }
 
-func get_models() ([]model, error) {
+type bytes[T any] []byte
+
+func get_models() (bytes[models], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
    req.URL.RawQuery = "context=128000"
@@ -22,14 +24,15 @@ func get_models() ([]model, error) {
       return nil, err
    }
    defer resp.Body.Close()
-   var value struct {
-      Data struct {
-         Models []model
-      }
+   return io.ReadAll(resp.Body)
+}
+
+type models struct {
+   Data struct {
+      Models []model
    }
-   err = json.NewDecoder(resp.Body).Decode(&value)
-   if err != nil {
-      return nil, err
-   }
-   return value.Data.Models, nil
+}
+
+func (m *models) unmarshal(data bytes[models]) error {
+   return json.Unmarshal(data, m)
 }
