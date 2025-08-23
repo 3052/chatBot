@@ -1,18 +1,17 @@
 package chatBot
 
 import (
-   "fmt"
-   "log"
+   "os"
    "testing"
 )
 
-func Test(t *testing.T) {
-   models, err := get_models()
+func TestMarshal(t *testing.T) {
+   data, err := get_models(0)
    if err != nil {
       t.Fatal(err)
    }
-   for _, modelVar := range models {
-      fmt.Printf("%+v\n", modelVar)
+   err = os.WriteFile("ignore/chatBot.json", data, os.ModePerm)
+   if err != nil {
+      t.Fatal(err)
    }
-   log.Print(len(models))
 }

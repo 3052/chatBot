@@ -2,8 +2,9 @@ package chatBot
 
 import (
    "encoding/json"
-   "log"
+   "io"
    "net/http"
+   "strconv"
 )
 
 type model struct {
@@ -14,11 +15,13 @@ type model struct {
 
 type bytes[T any] []byte
 
-func get_models() (bytes[models], error) {
+// 128000
+func get_models(content int) (bytes[models], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
-   req.URL.RawQuery = "context=128000"
-   log.Print("BEGIN")
+   if content >= 1 {
+      req.URL.RawQuery = "context=" + strconv.Itoa(content)
+   }
    resp, err := http.DefaultClient.Do(req)
    if err != nil {
       return nil, err
