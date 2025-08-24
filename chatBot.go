@@ -10,7 +10,6 @@ import (
 func get_models() (byte_slice[models], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
-   req.URL.RawQuery = "context=128000"
    resp, err := http.DefaultClient.Do(req)
    if err != nil {
       return nil, err

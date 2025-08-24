@@ -4,28 +4,10 @@ import (
    "bytes"
    "encoding/json"
    "fmt"
-   "log"
    "os"
    "slices"
    "testing"
 )
-
-func TestMarshal(t *testing.T) {
-   data, err := get_models()
-   if err != nil {
-      t.Fatal(err)
-   }
-   var data1 bytes.Buffer
-   err = json.Indent(&data1, data, "", " ")
-   if err != nil {
-      t.Fatal(err)
-   }
-   //err = os.WriteFile("ignore/chatBot.json", data1.Bytes(), os.ModePerm)
-   err = os.WriteFile("ignore/chatBot.json", data, os.ModePerm)
-   if err != nil {
-      t.Fatal(err)
-   }
-}
 
 func TestUnmarshal(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
@@ -55,9 +37,24 @@ func TestUnmarshal(t *testing.T) {
       }
    }
    for _, modelVar := range modelsVar {
-      fmt.Print(modelVar, "\n\n")
+      fmt.Println(modelVar.Slug)
    }
-   log.Print(len(modelsVar))
+}
+
+func TestMarshal(t *testing.T) {
+   data, err := get_models()
+   if err != nil {
+      t.Fatal(err)
+   }
+   var data1 bytes.Buffer
+   err = json.Indent(&data1, data, "", " ")
+   if err != nil {
+      t.Fatal(err)
+   }
+   err = os.WriteFile("ignore/chatBot.json", data1.Bytes(), os.ModePerm)
+   if err != nil {
+      t.Fatal(err)
+   }
 }
 
 var good_slugs = []string{
