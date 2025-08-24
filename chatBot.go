@@ -7,17 +7,29 @@ import (
    "net/http"
 )
 
-type byte_slice[T any] []byte
-
 func get_models() (byte_slice[models], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
+   req.URL.RawQuery = "context=128000"
    resp, err := http.DefaultClient.Do(req)
    if err != nil {
       return nil, err
    }
    defer resp.Body.Close()
    return io.ReadAll(resp.Body)
+}
+
+type model struct {
+   Slug string
+   Author string
+   ShortName string `json:"short_name"`
+   ContextLength int `json:"context_length"` // DELETE
+   Endpoint *struct { // DELETE
+      Pricing struct {
+         Completion price `json:",string"`
+         Prompt price `json:",string"`
+      }
+   }
 }
 
 func (m *model) String() string {
@@ -33,18 +45,7 @@ func (m *model) String() string {
    return string(b)
 }
 
-type model struct {
-   Slug string
-   Author string
-   ShortName string `json:"short_name"`
-   ContextLength int `json:"context_length"` // DELETE
-   Endpoint *struct { // DELETE
-      Pricing struct {
-         Completion price `json:",string"`
-         Prompt price `json:",string"`
-      }
-   }
-}
+type byte_slice[T any] []byte
 
 type models []*model
 

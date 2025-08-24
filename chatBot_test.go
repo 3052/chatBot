@@ -10,6 +10,23 @@ import (
    "testing"
 )
 
+func TestMarshal(t *testing.T) {
+   data, err := get_models()
+   if err != nil {
+      t.Fatal(err)
+   }
+   var data1 bytes.Buffer
+   err = json.Indent(&data1, data, "", " ")
+   if err != nil {
+      t.Fatal(err)
+   }
+   //err = os.WriteFile("ignore/chatBot.json", data1.Bytes(), os.ModePerm)
+   err = os.WriteFile("ignore/chatBot.json", data, os.ModePerm)
+   if err != nil {
+      t.Fatal(err)
+   }
+}
+
 func TestUnmarshal(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
    if err != nil {
@@ -51,20 +68,4 @@ var good_slugs = []string{
    "openai/gpt-4o",
    "openai/gpt-5",
    "qwen/qwen3-coder",
-}
-
-func TestMarshal(t *testing.T) {
-   data, err := get_models()
-   if err != nil {
-      t.Fatal(err)
-   }
-   var data1 bytes.Buffer
-   err = json.Indent(&data1, data, "", " ")
-   if err != nil {
-      t.Fatal(err)
-   }
-   err = os.WriteFile("ignore/chatBot.json", data1.Bytes(), os.ModePerm)
-   if err != nil {
-      t.Fatal(err)
-   }
 }
