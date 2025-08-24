@@ -5,72 +5,151 @@ import (
    "fmt"
    "sort"
    "strings"
+   "os"
 )
 
-// ---- Minimal JSON shapes. Extend as needed to match your payload. ----
+func main() {
+   data, err := os.ReadFile("../../ignore/chatBot.json")
+   if err != nil {
+      panic(err)
+   }
+   var p struct {
+      Data Payload
+   }
+   if err := json.Unmarshal(data, &p); err != nil {
+      panic(err)
+   }
+   
+   
+   canon := selectCanonicals(p.Data.Models, "openai")
+   for _, c := range canon {
+      fmt.Printf("canonical=%-24s  rep.slug=%-28s  name=%s\n",
+         c.CanonicalKey, c.Rep.Slug, c.Rep.Name)
+   }
+   
 
-type Payload struct {
-   Models []Model `json:"models"`
 }
 
+type Payload struct{ Models []Model `json:"models"` }
+
 type Model struct {
-   Slug        string `json:"slug"`
-   Permaslug   string `json:"permaslug"`
-   Name        string `json:"name"`
-   ShortName   string `json:"short_name"`
-   Author      string `json:"author"`
+   Slug        string  `json:"slug"`
+   Permaslug   string  `json:"permaslug"`
+   Name        string  `json:"name"`
+   ShortName   string  `json:"short_name"`
+   Author      string  `json:"author"`
+   Variant     string  `json:"variant"`
+   IsFree      bool    `json:"is_free"`
+   IsHidden    bool    `json:"is_hidden"`
+   IsDeranked  bool    `json:"is_deranked"`
+   IsDisabled  bool    `json:"is_disabled"`
 
-   ModelVersionGroupID *string `json:"model_version_group_id"`
+   ModelVersionGroupID *string   `json:"model_version_group_id"`
+   ContextLength       *int      `json:"context_length"`
+   MaxCompletionTokens *int      `json:"max_completion_tokens"`
+   SupportsReasoning   bool      `json:"supports_reasoning"`
+   SupportsToolParams  bool      `json:"supports_tool_parameters"`
+   HasChatCompletions  bool      `json:"has_chat_completions"`
+   WarningMessage      string    `json:"warning_message"`
 
-   ContextLength       *int    `json:"context_length"`
-   MaxCompletionTokens *int    `json:"max_completion_tokens"`
-   Variant             string  `json:"variant"` // e.g., "standard", "free", etc.
-   IsFree              bool    `json:"is_free"`
-   IsHidden            bool    `json:"is_hidden"`
-   IsDeranked          bool    `json:"is_deranked"`
-   IsDisabled          bool    `json:"is_disabled"`
-
-   // Capability flags (flattened from your JSON; add more if you want)
-   SupportsReasoning       bool `json:"supports_reasoning"`
-   SupportsToolParameters  bool `json:"supports_tool_parameters"`
-   HasChatCompletions      bool `json:"has_chat_completions"`
-
-   Endpoint *Endpoint `json:"endpoint"`
-
-   // Some deployments also expose provider fields top-level. If yours does, add them.
-   ProviderDisplayName string `json:"provider_display_name"`
-   ProviderSlug        string `json:"provider_slug"`
-
-   // Optional text to help exclude previews without regex/date checks
-   WarningMessage string `json:"warning_message"`
+   ProviderDisplayName string    `json:"provider_display_name"`
+   ProviderSlug        string    `json:"provider_slug"`
+   Endpoint            *Endpoint `json:"endpoint"`
 }
 
 type Endpoint struct {
-   ContextLength     *int   `json:"context_length"`
-   ProviderModelID   string `json:"provider_model_id"`
-   ProviderDisplay   string `json:"provider_display_name"`
-   ProviderSlug      string `json:"provider_slug"`
+   ContextLength    *int   `json:"context_length"`
+   ProviderModelID  string `json:"provider_model_id"`
+   ProviderDisplay  string `json:"provider_display_name"`
+   ProviderSlug     string `json:"provider_slug"`
 }
 
-// ---- Canonical family key (no date, no regex) ----
+type Canonical struct {
+   CanonicalKey string
+   Rep          Model
+}
 
-// Priority: model_version_group_id > permaslug > provider_model_id (sans transport suffix) > slug.
+// ---------------- Canonical key (no dates, no regex) ----------------
+
 func canonicalKey(m Model) string {
+   // Highest priority if present
    if m.ModelVersionGroupID != nil && *m.ModelVersionGroupID != "" {
       return *m.ModelVersionGroupID
    }
+
+   // Prefer a stable-looking identifier, then normalize its stem
    if m.Permaslug != "" {
-      return m.Permaslug
+      return normalizeStem(m.Permaslug)
    }
+   if m.Slug != "" {
+      return normalizeStem(m.Slug)
+   }
+
+   // Fallbacks (rare)
    if pid := providerModelID(m); pid != "" {
-      // Drop transport suffix after ':' (e.g., "openai/gpt-oss-20b:free" -> "openai/gpt-oss-20b")
-      if idx := strings.IndexByte(pid, ':'); idx >= 0 {
-         return pid[:idx]
+      // strip transport suffix like ":free"
+      if i := strings.IndexByte(pid, ':'); i >= 0 {
+         pid = pid[:i]
       }
-      return pid
+      return normalizeStem(pid)
    }
-   // Final fallback
-   return m.Slug
+   return ""
+}
+
+// normalizeStem keeps the vendor prefix (before '/'),
+// then truncates the model part at the first "version-like" token:
+//   - purely numeric tokens (e.g., "2024", "07", "18", "2")
+//   - tokens equal to "preview", "beta", or "latest" (case-insensitive)
+func normalizeStem(id string) string {
+   id = strings.TrimSpace(id)
+   if id == "" {
+      return id
+   }
+   parts := strings.SplitN(id, "/", 2)
+   if len(parts) != 2 {
+      // no vendor prefix; just normalize the single part
+      return truncateAtVersionish(id)
+   }
+   vendor := parts[0]
+   model := truncateAtVersionish(parts[1])
+   if model == "" {
+      // if everything after truncation vanished, fall back to the original second part
+      model = parts[1]
+   }
+   return vendor + "/" + model
+}
+
+func truncateAtVersionish(s string) string {
+   toks := strings.Split(s, "-")
+   out := make([]string, 0, len(toks))
+   for _, t := range toks {
+      lt := strings.ToLower(strings.TrimSpace(t))
+      if lt == "" {
+         continue
+      }
+      // stop at the first version-like token
+      if isNumericOnly(lt) || lt == "preview" || lt == "beta" || lt == "latest" {
+         break
+      }
+      out = append(out, lt)
+   }
+   // if we never appended anything (e.g., started numeric), return original
+   if len(out) == 0 {
+      return s
+   }
+   return strings.Join(out, "-")
+}
+
+func isNumericOnly(s string) bool {
+   if s == "" {
+      return false
+   }
+   for i := 0; i < len(s); i++ {
+      if s[i] < '0' || s[i] > '9' {
+         return false
+      }
+   }
+   return true
 }
 
 func providerModelID(m Model) string {
@@ -80,12 +159,55 @@ func providerModelID(m Model) string {
    return ""
 }
 
-// ---- Preference scoring (no date logic) ----
+// ---------------- Selection/scoring (unchanged, no dates) ----------------
 
-func scoreModel(m Model) int64 {
-   var s int64 = 0
+type CanonicalScore struct {
+   Key   string
+   Model Model
+   Score int64
+}
 
-   // Strong negatives for unusable entries
+func selectCanonicals(models []Model, authorFilter string) []Canonical {
+   group := map[string][]Model{}
+   for _, m := range models {
+      if authorFilter != "" && !strings.EqualFold(m.Author, authorFilter) {
+         continue
+      }
+      key := canonicalKey(m) // normalized stem ensures no dated canonical
+      if key == "" {
+         continue
+      }
+      group[key] = append(group[key], m)
+   }
+
+   out := make([]Canonical, 0, len(group))
+   for key, list := range group {
+      // pick the best representative for this family
+      best := list[0]
+      bestScore := scoreModel(key, best)
+      for i := 1; i < len(list); i++ {
+         if sc := scoreModel(key, list[i]); sc > bestScore {
+            best, bestScore = list[i], sc
+         }
+      }
+      out = append(out, Canonical{CanonicalKey: key, Rep: best})
+   }
+
+   sort.Slice(out, func(i, j int) bool { return out[i].CanonicalKey < out[j].CanonicalKey })
+   return out
+}
+
+func scoreModel(key string, m Model) int64 {
+   var s int64
+   // Prefer entries whose slug/permaslug equals the canonical stem
+   if m.Slug == key {
+      s += 1_000_000
+   }
+   if m.Permaslug == key {
+      s += 800_000
+   }
+
+   // Penalize unusable/less desirable
    if m.IsDisabled {
       s -= 1_000_000
    }
@@ -95,48 +217,37 @@ func scoreModel(m Model) int64 {
    if m.IsDeranked {
       s -= 100_000
    }
-
-   // Prefer production over preview/beta by simple substring checks (no regex)
    if looksPreview(m) {
       s -= 50_000
    }
 
-   // Prefer "standard" variant
+   // Prefer production traits
    if strings.EqualFold(m.Variant, "standard") {
       s += 10_000
    }
-
-   // Non-free often has fewer limits
    if !m.IsFree {
       s += 5_000
    }
 
-   // Feature richness
+   // Capabilities & limits
    if m.SupportsReasoning {
       s += 2_000
    }
-   if m.SupportsToolParameters {
+   if m.SupportsToolParams {
       s += 1_500
    }
    if m.HasChatCompletions {
       s += 1_000
    }
+   s += int64(maxInt(ptr(m.ContextLength), ptr(endpointContext(m))))
+   s += int64(ptr(m.MaxCompletionTokens))
 
-   // Bigger context and completions
-   s += int64(maxInt(ptrOrZero(m.ContextLength), ptrOrZero(endpointContext(m))))
-   s += int64(ptrOrZero(m.MaxCompletionTokens))
-
-   // Provider preference (when the same family exists via multiple providers)
-   provider := strings.ToLower(preferredProviderName(m))
-   if provider == "openai" {
-      s += 2_500
-   }
-
+   // Gentle tie-breaker for shorter slugs
+   s -= int64(len(m.Slug)) / 10
    return s
 }
 
 func looksPreview(m Model) bool {
-   // Quick, non-regex, date-free checks
    fields := []string{m.Slug, m.Permaslug, m.Name, m.ShortName, m.WarningMessage}
    if m.Endpoint != nil {
       fields = append(fields, m.Endpoint.ProviderModelID)
@@ -150,23 +261,6 @@ func looksPreview(m Model) bool {
    return false
 }
 
-func preferredProviderName(m Model) string {
-   if m.ProviderDisplayName != "" {
-      return m.ProviderDisplayName
-   }
-   if m.Endpoint != nil && m.Endpoint.ProviderDisplay != "" {
-      return m.Endpoint.ProviderDisplay
-   }
-   // Fallback: derive from provider slug if display name is empty
-   if m.ProviderSlug != "" {
-      return m.ProviderSlug
-   }
-   if m.Endpoint != nil && m.Endpoint.ProviderSlug != "" {
-      return m.Endpoint.ProviderSlug
-   }
-   return ""
-}
-
 func endpointContext(m Model) *int {
    if m.Endpoint != nil && m.Endpoint.ContextLength != nil {
       return m.Endpoint.ContextLength
@@ -174,7 +268,7 @@ func endpointContext(m Model) *int {
    return nil
 }
 
-func ptrOrZero(p *int) int {
+func ptr(p *int) int {
    if p == nil {
       return 0
    }
@@ -186,58 +280,4 @@ func maxInt(a, b int) int {
       return a
    }
    return b
-}
-
-// ---- Select canonical per family ----
-
-func selectCanonical(models []Model, authorFilter string) map[string]Model {
-   // Group by canonical key, optionally filter by author
-   group := map[string][]Model{}
-   for _, m := range models {
-      if authorFilter != "" && !strings.EqualFold(m.Author, authorFilter) {
-         continue
-      }
-      key := canonicalKey(m)
-      group[key] = append(group[key], m)
-   }
-
-   // Pick best per key
-   best := make(map[string]Model, len(group))
-   for key, list := range group {
-      sort.SliceStable(list, func(i, j int) bool {
-         // Higher score first; tie-breakers keep stable ordering
-         return scoreModel(list[i]) > scoreModel(list[j])
-      })
-      best[key] = list[0]
-   }
-   return best
-}
-
-// ---- Example usage ----
-
-func main() {
-   raw := `{"models":[
-     {"slug":"openai/gpt-4o-2024-11-20","permaslug":"openai/gpt-4o","name":"OpenAI: GPT-4o","author":"openai","variant":"standard","supports_reasoning":true,"has_chat_completions":true,"context_length":128000},
-     {"slug":"openai/gpt-4o-2024-08-06","permaslug":"openai/gpt-4o","name":"OpenAI: GPT-4o","author":"openai","variant":"free","is_free":true,"has_chat_completions":true,"context_length":128000},
-     {"slug":"openai/o1-preview-2024-09-12","permaslug":"openai/o1-preview-2024-09-12","name":"OpenAI: o1-preview","author":"openai","variant":"standard","supports_reasoning":true,"has_chat_completions":true},
-     {"slug":"openai/gpt-5","permaslug":"openai/gpt-5","name":"OpenAI: GPT-5","author":"openai","variant":"standard","supports_reasoning":true,"has_chat_completions":true,"context_length":400000}
-   ]}`
-   var p Payload
-   if err := json.Unmarshal([]byte(raw), &p); err != nil {
-      panic(err)
-   }
-
-   canon := selectCanonical(p.Models, "openai")
-   fmt.Println("Canonical OpenAI models (no date logic):")
-   // Stable display: sort keys for consistent output
-   keys := make([]string, 0, len(canon))
-   for k := range canon {
-      keys = append(keys, k)
-   }
-   sort.Strings(keys)
-   for _, k := range keys {
-      m := canon[k]
-      fmt.Printf("key=%-28s  slug=%-28s  variant=%-10s  score=%d\n",
-         k, m.Slug, m.Variant, scoreModel(m))
-   }
 }
