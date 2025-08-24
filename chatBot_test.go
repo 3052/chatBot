@@ -2,6 +2,7 @@ package chatBot
 
 import (
    "bytes"
+   "cmp"
    "encoding/json"
    "fmt"
    "os"
@@ -28,6 +29,12 @@ func TestUnmarshal(t *testing.T) {
       }
       return false
    })
+   slices.SortFunc(modelsVar, func(a, b *model) int {
+      return cmp.Compare(a.Slug, b.Slug)
+   })
+   modelsVar = slices.CompactFunc(modelsVar, func(a, b *model) bool {
+      return a.Slug == b.Slug
+   })
    for _, slug := range good_slugs {
       i := slices.IndexFunc(modelsVar, func(m *model) bool {
          return m.Slug == slug
@@ -36,8 +43,16 @@ func TestUnmarshal(t *testing.T) {
          t.Fatal(slug)
       }
    }
+   file, err := os.Create("chatBot.txt")
+   if err != nil {
+      t.Fatal(err)
+   }
+   defer file.Close()
    for _, modelVar := range modelsVar {
-      fmt.Println(modelVar.Slug)
+      _, err = fmt.Fprintln(file, modelVar.Slug)
+      if err != nil {
+         t.Fatal(err)
+      }
    }
 }
 
