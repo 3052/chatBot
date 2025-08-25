@@ -49,7 +49,7 @@ func TestUnmarshal(t *testing.T) {
    }
    defer file.Close()
    for _, modelVar := range modelsVar {
-      _, err = fmt.Fprintln(file, modelVar.Slug)
+      _, err = fmt.Fprintf(file, "https://openrouter.ai/%v\n", modelVar.Slug)
       if err != nil {
          t.Fatal(err)
       }
