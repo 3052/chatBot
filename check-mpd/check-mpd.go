@@ -168,6 +168,7 @@ type representationA struct {
 }
 
 const prefix = "http://test.test/"
+
 func main() {
    run := flag.String("r", "", "run")
    mpd := flag.String("m", "../internal/", "mpd")

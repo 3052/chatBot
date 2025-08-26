@@ -74,7 +74,7 @@ func (c *chatBot) get_go(name string) error {
    var lines int
    for _, line := range strings.Split(string(data), "\n") {
       line = strings.TrimSpace(line)
-      if line != ""  {
+      if line != "" {
          if !strings.HasPrefix(line, "//") {
             lines++
          }
@@ -86,14 +86,14 @@ func (c *chatBot) get_go(name string) error {
 
 type chatBot struct {
    Developer string
-   ChatBot string
-   Model string
-   Url string
-   Ok bool
-   prompts int
-   median time.Duration
-   sum time.Duration
-   loc int
+   ChatBot   string
+   Model     string
+   Url       string
+   Ok        bool
+   prompts   int
+   median    time.Duration
+   sum       time.Duration
+   loc       int
 }
 
 func (*chatBot) header() []string {
