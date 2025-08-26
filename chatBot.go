@@ -5,6 +5,7 @@ import (
    "fmt"
    "io"
    "net/http"
+   "time"
 )
 
 func get_models() (byte_slice[models], error) {
@@ -19,6 +20,7 @@ func get_models() (byte_slice[models], error) {
 }
 
 type model struct {
+   UpdatedAt time.Time `json:"updated_at"`
    Slug string
    Author string
    ShortName string `json:"short_name"`
