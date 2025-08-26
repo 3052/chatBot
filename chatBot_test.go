@@ -5,12 +5,13 @@ import (
    "cmp"
    "encoding/json"
    "fmt"
+   "log"
    "os"
    "slices"
    "testing"
 )
 
-func TestUnmarshal(t *testing.T) {
+func TestStdout(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
    if err != nil {
       t.Fatal(err)
@@ -20,21 +21,41 @@ func TestUnmarshal(t *testing.T) {
    if err != nil {
       t.Fatal(err)
    }
-   modelsVar = slices.DeleteFunc(modelsVar, func(m *model) bool {
-      if m.ContextLength < 128000 {
-         return true
+   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
+   for _, slug := range good_slugs {
+      i := slices.IndexFunc(modelsVar, func(m *model) bool {
+         return m.Slug == slug
+      })
+      if i == -1 {
+         t.Fatal(slug)
       }
-      if m.Endpoint == nil {
-         return true
-      }
-      return false
-   })
+   }
    slices.SortFunc(modelsVar, func(a, b *model) int {
       return cmp.Compare(a.Slug, b.Slug)
    })
-   modelsVar = slices.CompactFunc(modelsVar, func(a, b *model) bool {
-      return a.Slug == b.Slug
+   for _, modelVar := range modelsVar {
+      fmt.Print(modelVar, "\n\n")
+   }
+   log.Print(len(modelsVar))
+}
+
+func TestFile(t *testing.T) {
+   data, err := os.ReadFile("ignore/chatBot.json")
+   if err != nil {
+      t.Fatal(err)
+   }
+   var modelsVar models
+   err = modelsVar.unmarshal(data)
+   if err != nil {
+      t.Fatal(err)
+   }
+   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
+   slices.SortFunc(modelsVar, func(a, b *model) int {
+      return cmp.Compare(a.Slug, b.Slug)
    })
+   //modelsVar = slices.CompactFunc(modelsVar, func(a, b *model) bool {
+   //   return a.Slug == b.Slug
+   //})
    for _, slug := range good_slugs {
       i := slices.IndexFunc(modelsVar, func(m *model) bool {
          return m.Slug == slug

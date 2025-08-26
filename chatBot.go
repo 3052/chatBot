@@ -8,6 +8,45 @@ import (
    "time"
 )
 
+func delete_model(m *model) bool {
+   if m.ContextLength < 128000 {
+      return true
+   }
+   if m.Endpoint == nil {
+      return true
+   }
+   if m.Endpoint.ModelVariantSlug != m.Slug {
+      return true
+   }
+   const day = 24 * time.Hour
+   const month = 30 * day
+   return time.Since(m.UpdatedAt) >= 5*month
+}
+
+func (m *model) String() string {
+   var b []byte
+   b = fmt.Appendln(b, "author =", m.Author)
+   b = fmt.Appendln(b, "context =", m.ContextLength)
+   if m.Endpoint != nil {
+      b = fmt.Appendln(b, "endpoint model =", m.Endpoint.ModelVariantSlug)
+   }
+   b = fmt.Appendln(b, "short =", m.ShortName)
+   b = fmt.Appendln(b, "slug =", m.Slug)
+   b = fmt.Append(b, "updated = ", m.UpdatedAt)
+   return string(b)
+}
+
+type model struct {
+   Author string
+   ContextLength int `json:"context_length"`
+   Endpoint *struct { // DELETE
+      ModelVariantSlug string `json:"model_variant_slug"`
+   }
+   ShortName string `json:"short_name"`
+   Slug string
+   UpdatedAt time.Time `json:"updated_at"`
+}
+
 func get_models() (byte_slice[models], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)
    req.URL.Path = "/api/frontend/models/find"
@@ -17,33 +56,6 @@ func get_models() (byte_slice[models], error) {
    }
    defer resp.Body.Close()
    return io.ReadAll(resp.Body)
-}
-
-type model struct {
-   UpdatedAt time.Time `json:"updated_at"`
-   Slug string
-   Author string
-   ShortName string `json:"short_name"`
-   ContextLength int `json:"context_length"` // DELETE
-   Endpoint *struct { // DELETE
-      Pricing struct {
-         Completion price `json:",string"`
-         Prompt price `json:",string"`
-      }
-   }
-}
-
-func (m *model) String() string {
-   var b []byte
-   b = fmt.Appendln(b, "slug =", m.Slug)
-   b = fmt.Appendln(b, "author =", m.Author)
-   b = fmt.Appendln(b, "short name =", m.ShortName)
-   b = fmt.Append(b, "context length = ", m.ContextLength)
-   if m.Endpoint != nil {
-      b = fmt.Append(b, "\ncompletion = ", m.Endpoint.Pricing.Completion)
-      b = fmt.Append(b, "\nprompt = ", m.Endpoint.Pricing.Prompt)
-   }
-   return string(b)
 }
 
 type byte_slice[T any] []byte
@@ -63,9 +75,3 @@ func (m *models) unmarshal(data byte_slice[models]) error {
    *m = value.Data.Models
    return nil
 }
-
-func (p price) String() string {
-   return fmt.Sprintf("$%.2f/M", float64(p) * 1_000_000)
-}
-
-type price float64
