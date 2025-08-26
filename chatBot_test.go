@@ -20,12 +20,14 @@ func TestModel(t *testing.T) {
       t.Fatal(err)
    }
    modelsVar = slices.DeleteFunc(modelsVar, delete_model)
-   for _, slug := range good_slugs {
-      i := slices.IndexFunc(modelsVar, func(m *model) bool {
-         return m.Slug == slug
-      })
-      if i == -1 {
-         t.Fatal(slug)
+   for key, value := range canonical {
+      if value {
+         i := slices.IndexFunc(modelsVar, func(m *model) bool {
+            return m.Slug == key
+         })
+         if i == -1 {
+            t.Fatal(key)
+         }
       }
    }
    for _, modelVar := range modelsVar {
@@ -50,14 +52,4 @@ func TestMarshal(t *testing.T) {
    if err != nil {
       t.Fatal(err)
    }
-}
-
-var good_slugs = []string{
-   "anthropic/claude-opus-4.1",
-   "anthropic/claude-sonnet-4",
-   "google/gemini-2.5-flash",
-   "google/gemini-2.5-pro",
-   "openai/gpt-4o",
-   "openai/gpt-5",
-   "qwen/qwen3-coder",
 }
