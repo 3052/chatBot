@@ -2,49 +2,12 @@ package chatBot
 
 import (
    "bytes"
-   "cmp"
    "encoding/json"
    "fmt"
-   "log"
    "os"
    "slices"
    "testing"
 )
-
-func TestSlug(t *testing.T) {
-   data, err := os.ReadFile("ignore/chatBot.json")
-   if err != nil {
-      t.Fatal(err)
-   }
-   var modelsVar models
-   err = modelsVar.unmarshal(data)
-   if err != nil {
-      t.Fatal(err)
-   }
-   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
-   slices.SortFunc(modelsVar, func(a, b *model) int {
-      return cmp.Compare(a.Slug, b.Slug)
-   })
-   for _, slug := range good_slugs {
-      i := slices.IndexFunc(modelsVar, func(m *model) bool {
-         return m.Slug == slug
-      })
-      if i == -1 {
-         t.Fatal(slug)
-      }
-   }
-   file, err := os.Create("chatBot.txt")
-   if err != nil {
-      t.Fatal(err)
-   }
-   defer file.Close()
-   for _, modelVar := range modelsVar {
-      _, err = fmt.Fprintf(file, "https://openrouter.ai/%v\n", modelVar.Slug)
-      if err != nil {
-         t.Fatal(err)
-      }
-   }
-}
 
 func TestModel(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
@@ -65,13 +28,12 @@ func TestModel(t *testing.T) {
          t.Fatal(slug)
       }
    }
-   slices.SortFunc(modelsVar, func(a, b *model) int {
-      return cmp.Compare(a.Slug, b.Slug)
-   })
    for _, modelVar := range modelsVar {
       fmt.Print(modelVar, "\n\n")
    }
-   log.Print(len(modelsVar))
+   for _, modelVar := range modelsVar {
+      fmt.Println(modelVar.Slug)
+   }
 }
 
 func TestMarshal(t *testing.T) {
