@@ -3,13 +3,12 @@ package chatBot
 import (
    "bytes"
    "encoding/json"
-   "fmt"
    "os"
    "slices"
    "testing"
 )
 
-func TestModel(t *testing.T) {
+func TestOne(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
    if err != nil {
       t.Fatal(err)
@@ -20,6 +19,14 @@ func TestModel(t *testing.T) {
       t.Fatal(err)
    }
    modelsVar = slices.DeleteFunc(modelsVar, delete_model)
+   // too many?
+   for _, modelVar := range modelsVar {
+      _, ok := canonical[modelVar.Slug]
+      if !ok {
+         t.Fatal(modelVar.Slug)
+      }
+   }
+   // too few?
    for key, value := range canonical {
       if value {
          i := slices.IndexFunc(modelsVar, func(m *model) bool {
@@ -30,15 +37,9 @@ func TestModel(t *testing.T) {
          }
       }
    }
-   for _, modelVar := range modelsVar {
-      fmt.Print(modelVar, "\n\n")
-   }
-   for _, modelVar := range modelsVar {
-      fmt.Println(modelVar.Slug)
-   }
 }
 
-func TestMarshal(t *testing.T) {
+func TestZero(t *testing.T) {
    data, err := get_models()
    if err != nil {
       t.Fatal(err)
