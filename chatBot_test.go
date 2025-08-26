@@ -11,7 +11,42 @@ import (
    "testing"
 )
 
-func TestStdout(t *testing.T) {
+func TestSlug(t *testing.T) {
+   data, err := os.ReadFile("ignore/chatBot.json")
+   if err != nil {
+      t.Fatal(err)
+   }
+   var modelsVar models
+   err = modelsVar.unmarshal(data)
+   if err != nil {
+      t.Fatal(err)
+   }
+   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
+   slices.SortFunc(modelsVar, func(a, b *model) int {
+      return cmp.Compare(a.Slug, b.Slug)
+   })
+   for _, slug := range good_slugs {
+      i := slices.IndexFunc(modelsVar, func(m *model) bool {
+         return m.Slug == slug
+      })
+      if i == -1 {
+         t.Fatal(slug)
+      }
+   }
+   file, err := os.Create("chatBot.txt")
+   if err != nil {
+      t.Fatal(err)
+   }
+   defer file.Close()
+   for _, modelVar := range modelsVar {
+      _, err = fmt.Fprintf(file, "https://openrouter.ai/%v\n", modelVar.Slug)
+      if err != nil {
+         t.Fatal(err)
+      }
+   }
+}
+
+func TestModel(t *testing.T) {
    data, err := os.ReadFile("ignore/chatBot.json")
    if err != nil {
       t.Fatal(err)
@@ -37,44 +72,6 @@ func TestStdout(t *testing.T) {
       fmt.Print(modelVar, "\n\n")
    }
    log.Print(len(modelsVar))
-}
-
-func TestFile(t *testing.T) {
-   data, err := os.ReadFile("ignore/chatBot.json")
-   if err != nil {
-      t.Fatal(err)
-   }
-   var modelsVar models
-   err = modelsVar.unmarshal(data)
-   if err != nil {
-      t.Fatal(err)
-   }
-   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
-   slices.SortFunc(modelsVar, func(a, b *model) int {
-      return cmp.Compare(a.Slug, b.Slug)
-   })
-   //modelsVar = slices.CompactFunc(modelsVar, func(a, b *model) bool {
-   //   return a.Slug == b.Slug
-   //})
-   for _, slug := range good_slugs {
-      i := slices.IndexFunc(modelsVar, func(m *model) bool {
-         return m.Slug == slug
-      })
-      if i == -1 {
-         t.Fatal(slug)
-      }
-   }
-   file, err := os.Create("chatBot.txt")
-   if err != nil {
-      t.Fatal(err)
-   }
-   defer file.Close()
-   for _, modelVar := range modelsVar {
-      _, err = fmt.Fprintf(file, "https://openrouter.ai/%v\n", modelVar.Slug)
-      if err != nil {
-         t.Fatal(err)
-      }
-   }
 }
 
 func TestMarshal(t *testing.T) {

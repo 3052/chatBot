@@ -23,6 +23,17 @@ func delete_model(m *model) bool {
    return time.Since(m.UpdatedAt) >= 5*month
 }
 
+type model struct {
+   Author string
+   ContextLength int `json:"context_length"`
+   Endpoint *struct { // DELETE
+      ModelVariantSlug string `json:"model_variant_slug"`
+   }
+   ShortName string `json:"short_name"`
+   Slug string
+   UpdatedAt time.Time `json:"updated_at"`
+}
+
 func (m *model) String() string {
    var b []byte
    b = fmt.Appendln(b, "author =", m.Author)
@@ -34,17 +45,6 @@ func (m *model) String() string {
    b = fmt.Appendln(b, "slug =", m.Slug)
    b = fmt.Append(b, "updated = ", m.UpdatedAt)
    return string(b)
-}
-
-type model struct {
-   Author string
-   ContextLength int `json:"context_length"`
-   Endpoint *struct { // DELETE
-      ModelVariantSlug string `json:"model_variant_slug"`
-   }
-   ShortName string `json:"short_name"`
-   Slug string
-   UpdatedAt time.Time `json:"updated_at"`
 }
 
 func get_models() (byte_slice[models], error) {
