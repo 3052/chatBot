@@ -5,100 +5,311 @@ var all_models = []struct {
    slug string
    url  string
 }{
-   {slug: "ai21/jamba-large-1.7"},
-   {slug: "ai21/jamba-mini-1.7"},
-   {slug: "anthropic/claude-3.5-haiku-20241022"},
-   {slug: "anthropic/claude-3.5-sonnet"},
-   {slug: "anthropic/claude-3.5-sonnet-20240620"},
-   {slug: "anthropic/claude-3.7-sonnet"},
-   {slug: "anthropic/claude-opus-4"},
-   {slug: "anthropic/claude-opus-4.1", ok: true},
-   {slug: "anthropic/claude-sonnet-4", ok: true},
-   {slug: "arcee-ai/maestro-reasoning"},
-   {slug: "arcee-ai/spotlight"},
-   {slug: "arcee-ai/virtuoso-large"},
-   {slug: "bytedance/ui-tars-1.5-7b"},
-   {slug: "deepseek/deepseek-chat-v3-0324"},
-   {slug: "deepseek/deepseek-chat-v3.1"},
-   {slug: "deepseek/deepseek-prover-v2"},
-   {slug: "deepseek/deepseek-r1"},
-   {slug: "deepseek/deepseek-r1-0528"},
-   {slug: "deepseek/deepseek-r1-distill-llama-70b"},
-   {slug: "deepseek/deepseek-r1-distill-qwen-1.5b"},
-   {slug: "deepseek/deepseek-r1-distill-qwen-32b"},
-   {slug: "deepseek/deepseek-v3-base"},
-   {slug: "deepseek/deepseek-v3.1-base"},
-   {slug: "google/gemini-2.0-flash-001"},
-   {slug: "google/gemini-2.0-flash-lite-001"},
-   {slug: "google/gemini-2.5-flash", ok: true},
-   {slug: "google/gemini-2.5-flash-lite", ok: true, url: "aistudio.google.com?model=gemini-2.5-flash-lite"},
-   {slug: "google/gemini-2.5-flash-lite-preview-06-17"},
-   {slug: "google/gemini-2.5-pro", ok: true},
-   {slug: "google/gemini-2.5-pro-exp-03-25"},
-   {slug: "google/gemini-2.5-pro-preview"},
-   {slug: "google/gemini-2.5-pro-preview-05-06"},
-   {slug: "google/gemini-flash-1.5"},
-   {slug: "google/gemini-flash-1.5-8b"},
-   {slug: "google/gemini-pro-1.5"},
-   {slug: "inception/mercury"},
-   {slug: "inception/mercury-coder"},
-   {slug: "meta-llama/llama-4-maverick"},
-   {slug: "meta-llama/llama-4-scout"},
-   {slug: "meta-llama/llama-guard-4-12b"},
-   {slug: "microsoft/mai-ds-r1"},
-   {slug: "minimax/minimax-m1"},
-   {slug: "mistralai/codestral-2508"},
-   {slug: "mistralai/devstral-medium"},
-   {slug: "mistralai/devstral-small"},
-   {slug: "mistralai/devstral-small-2505"},
-   {slug: "mistralai/mistral-medium-3"},
-   {slug: "mistralai/mistral-medium-3.1"},
-   {slug: "mistralai/mistral-small-3.1-24b-instruct"},
-   {slug: "mistralai/mistral-small-3.2-24b-instruct"},
-   {slug: "moonshotai/kimi-vl-a3b-thinking"},
-   {slug: "nvidia/llama-3.1-nemotron-ultra-253b-v1"},
-   {slug: "nvidia/llama-3.3-nemotron-super-49b-v1"},
-   {slug: "openai/codex-mini"},
-   {slug: "openai/gpt-4.1"},
-   {slug: "openai/gpt-4.1-mini"},
-   {slug: "openai/gpt-4.1-nano"},
-   {slug: "openai/gpt-4o"},
-   {slug: "openai/gpt-4o-2024-05-13"},
-   {slug: "openai/gpt-4o-2024-08-06"},
-   {slug: "openai/gpt-4o-2024-11-20"},
-   {slug: "openai/gpt-4o-audio-preview"},
-   {slug: "openai/gpt-4o-mini"},
-   {slug: "openai/gpt-4o-mini-2024-07-18"},
-   {slug: "openai/gpt-4o-mini-search-preview"},
-   {slug: "openai/gpt-4o-search-preview"},
-   {slug: "openai/gpt-5", ok: true, url: "platform.openai.com/docs/models/gpt-5"},
-   {slug: "openai/gpt-5-chat", ok: true, url: "chatgpt.com?model=gpt-5"},
-   {slug: "openai/gpt-5-mini", ok: true, url: "platform.openai.com/docs/models/gpt-5-mini"},
-   {slug: "openai/gpt-5-nano", ok: true, url: "platform.openai.com/docs/models/gpt-5-nano"},
-   {slug: "openai/gpt-oss-120b", ok: true, url: "gpt-oss.com"},
-   {slug: "openai/gpt-oss-20b", ok: true, url: "gpt-oss.com"},
-   {slug: "openai/o3"},
-   {slug: "openai/o3-pro"},
-   {slug: "openai/o4-mini"},
-   {slug: "openai/o4-mini-high"},
-   {slug: "perplexity/r1-1776"},
-   {slug: "perplexity/sonar-deep-research"},
-   {slug: "perplexity/sonar-pro"},
-   {slug: "perplexity/sonar-reasoning-pro"},
-   {slug: "qwen/qwen3-235b-a22b-2507"},
-   {slug: "qwen/qwen3-235b-a22b-thinking-2507"},
-   {slug: "qwen/qwen3-30b-a3b-instruct-2507"},
-   {slug: "qwen/qwen3-8b"},
-   {slug: "qwen/qwen3-coder", ok: true},
-   {slug: "qwen/qwq-32b"},
-   {slug: "switchpoint/router"},
-   {slug: "tngtech/deepseek-r1t-chimera"},
-   {slug: "x-ai/grok-3"},
-   {slug: "x-ai/grok-3-beta"},
-   {slug: "x-ai/grok-3-mini"},
-   {slug: "x-ai/grok-3-mini-beta"},
-   {slug: "x-ai/grok-4"},
-   {slug: "z-ai/glm-4-32b"},
-   {slug: "z-ai/glm-4.5"},
-   {slug: "z-ai/glm-4.5-air"},
+   {
+      slug: "ai21/jamba-large-1.7",
+   },
+   {
+      slug: "ai21/jamba-mini-1.7",
+   },
+   {
+      slug: "anthropic/claude-3.5-haiku-20241022",
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet",
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet-20240620",
+   },
+   {
+      slug: "anthropic/claude-3.7-sonnet",
+   },
+   {
+      slug: "anthropic/claude-opus-4",
+   },
+   {
+      slug: "anthropic/claude-opus-4.1",
+      ok:   true,
+   },
+   {
+      slug: "anthropic/claude-sonnet-4",
+      ok:   true,
+   },
+   {
+      slug: "arcee-ai/maestro-reasoning",
+   },
+   {
+      slug: "arcee-ai/spotlight",
+   },
+   {
+      slug: "arcee-ai/virtuoso-large",
+   },
+   {
+      slug: "bytedance/ui-tars-1.5-7b",
+   },
+   {
+      slug: "deepseek/deepseek-chat-v3-0324",
+   },
+   {
+      slug: "deepseek/deepseek-chat-v3.1",
+   },
+   {
+      slug: "deepseek/deepseek-prover-v2",
+   },
+   {
+      slug: "deepseek/deepseek-r1",
+   },
+   {
+      slug: "deepseek/deepseek-r1-0528",
+   },
+   {
+      slug: "deepseek/deepseek-r1-distill-llama-70b",
+   },
+   {
+      slug: "deepseek/deepseek-r1-distill-qwen-1.5b",
+   },
+   {
+      slug: "deepseek/deepseek-r1-distill-qwen-32b",
+   },
+   {
+      slug: "deepseek/deepseek-v3-base",
+   },
+   {
+      slug: "deepseek/deepseek-v3.1-base",
+   },
+   {
+      slug: "google/gemini-2.0-flash-001",
+   },
+   {
+      slug: "google/gemini-2.0-flash-lite-001",
+   },
+   {
+      slug: "google/gemini-2.5-flash",
+      ok:   true,
+   },
+   {
+      slug: "google/gemini-2.5-flash-lite",
+      ok:   true,
+      url:  "aistudio.google.com?model=gemini-2.5-flash-lite",
+   },
+   {
+      slug: "google/gemini-2.5-flash-lite-preview-06-17",
+   },
+   {
+      slug: "google/gemini-2.5-pro",
+      ok:   true,
+   },
+   {
+      slug: "google/gemini-2.5-pro-exp-03-25",
+   },
+   {
+      slug: "google/gemini-2.5-pro-preview",
+   },
+   {
+      slug: "google/gemini-2.5-pro-preview-05-06",
+   },
+   {
+      slug: "google/gemini-flash-1.5",
+   },
+   {
+      slug: "google/gemini-flash-1.5-8b",
+   },
+   {
+      slug: "google/gemini-pro-1.5",
+   },
+   {
+      slug: "inception/mercury",
+   },
+   {
+      slug: "inception/mercury-coder",
+   },
+   {
+      slug: "meta-llama/llama-4-maverick",
+   },
+   {
+      slug: "meta-llama/llama-4-scout",
+   },
+   {
+      slug: "meta-llama/llama-guard-4-12b",
+   },
+   {
+      slug: "microsoft/mai-ds-r1",
+   },
+   {
+      slug: "minimax/minimax-m1",
+   },
+   {
+      slug: "mistralai/codestral-2508",
+   },
+   {
+      slug: "mistralai/devstral-medium",
+   },
+   {
+      slug: "mistralai/devstral-small",
+   },
+   {
+      slug: "mistralai/devstral-small-2505",
+   },
+   {
+      slug: "mistralai/mistral-medium-3",
+   },
+   {
+      slug: "mistralai/mistral-medium-3.1",
+   },
+   {
+      slug: "mistralai/mistral-small-3.1-24b-instruct",
+   },
+   {
+      slug: "mistralai/mistral-small-3.2-24b-instruct",
+   },
+   {
+      slug: "moonshotai/kimi-vl-a3b-thinking",
+   },
+   {
+      slug: "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+   },
+   {
+      slug: "nvidia/llama-3.3-nemotron-super-49b-v1",
+   },
+   {
+      slug: "openai/codex-mini",
+   },
+   {
+      slug: "openai/gpt-4.1",
+   },
+   {
+      slug: "openai/gpt-4.1-mini",
+   },
+   {
+      slug: "openai/gpt-4.1-nano",
+   },
+   {
+      slug: "openai/gpt-4o",
+   },
+   {
+      slug: "openai/gpt-4o-2024-05-13",
+   },
+   {
+      slug: "openai/gpt-4o-2024-08-06",
+   },
+   {
+      slug: "openai/gpt-4o-2024-11-20",
+   },
+   {
+      slug: "openai/gpt-4o-audio-preview",
+   },
+   {
+      slug: "openai/gpt-4o-mini",
+   },
+   {
+      slug: "openai/gpt-4o-mini-2024-07-18",
+   },
+   {
+      slug: "openai/gpt-4o-mini-search-preview",
+   },
+   {
+      slug: "openai/gpt-4o-search-preview",
+   },
+   {
+      slug: "openai/gpt-5",
+      ok:   true,
+      url:  "platform.openai.com/docs/models/gpt-5",
+   },
+   {
+      slug: "openai/gpt-5-chat",
+      ok:   true,
+      url:  "chatgpt.com?model=gpt-5",
+   },
+   {
+      slug: "openai/gpt-5-mini",
+      ok:   true,
+      url:  "platform.openai.com/docs/models/gpt-5-mini",
+   },
+   {
+      slug: "openai/gpt-5-nano",
+      ok:   true,
+      url:  "platform.openai.com/docs/models/gpt-5-nano",
+   },
+   {
+      slug: "openai/gpt-oss-120b",
+      ok:   true,
+      url:  "gpt-oss.com",
+   },
+   {
+      slug: "openai/gpt-oss-20b",
+      ok:   true,
+      url:  "gpt-oss.com",
+   },
+   {
+      slug: "openai/o3",
+   },
+   {
+      slug: "openai/o3-pro",
+   },
+   {
+      slug: "openai/o4-mini",
+   },
+   {
+      slug: "openai/o4-mini-high",
+   },
+   {
+      slug: "perplexity/r1-1776",
+   },
+   {
+      slug: "perplexity/sonar-deep-research",
+   },
+   {
+      slug: "perplexity/sonar-pro",
+   },
+   {
+      slug: "perplexity/sonar-reasoning-pro",
+   },
+   {
+      slug: "qwen/qwen3-235b-a22b-2507",
+   },
+   {
+      slug: "qwen/qwen3-235b-a22b-thinking-2507",
+   },
+   {
+      slug: "qwen/qwen3-30b-a3b-instruct-2507",
+   },
+   {
+      slug: "qwen/qwen3-8b",
+   },
+   {
+      slug: "qwen/qwen3-coder",
+      ok:   true,
+   },
+   {
+      slug: "qwen/qwq-32b",
+   },
+   {
+      slug: "switchpoint/router",
+   },
+   {
+      slug: "tngtech/deepseek-r1t-chimera",
+   },
+   {
+      slug: "x-ai/grok-3",
+   },
+   {
+      slug: "x-ai/grok-3-beta",
+   },
+   {
+      slug: "x-ai/grok-3-mini",
+   },
+   {
+      slug: "x-ai/grok-3-mini-beta",
+   },
+   {
+      slug: "x-ai/grok-4",
+   },
+   {
+      slug: "z-ai/glm-4-32b",
+   },
+   {
+      slug: "z-ai/glm-4.5",
+   },
+   {
+      slug: "z-ai/glm-4.5-air",
+   },
 }
