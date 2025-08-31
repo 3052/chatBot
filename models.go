@@ -10,7 +10,10 @@ type model struct {
    url  string
 }
 
-var errUnverified = errors.New("unverified")
+var (
+   errLegacy = errors.New("legacy")
+   errUnverified = errors.New("unverified")
+)
 
 var all_models = models{
    {
@@ -21,25 +24,26 @@ var all_models = models{
       slug: "ai21/jamba-mini-1.7",
       url:  "studio.ai21.com",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "anthropic/claude-3.5-haiku-20241022",
+      err: errLegacy,
    },
    {
-      err:  errUnverified,
       slug: "anthropic/claude-3.5-sonnet",
+      err: errLegacy,
    },
    {
-      err:  errUnverified,
       slug: "anthropic/claude-3.5-sonnet-20240620",
+      err: errLegacy,
    },
    {
-      err:  errUnverified,
       slug: "anthropic/claude-3.7-sonnet",
+      err: errLegacy,
    },
    {
-      err:  errUnverified,
       slug: "anthropic/claude-opus-4",
+      err: errLegacy,
    },
    {
       slug: "anthropic/claude-opus-4.1",
@@ -49,76 +53,95 @@ var all_models = models{
       slug: "anthropic/claude-sonnet-4",
       url:  "claude.ai",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "arcee-ai/maestro-reasoning",
-      url:  "api.together.ai/playground/arcee-ai/maestro-reasoning",
+      slug: "bytedance/ui-tars-1.5-7b",
+      url: "openrouter.ai/chat?models=bytedance/ui-tars-1.5-7b",
    },
+   //////////////////////////////////////////////////////////////////////////////
+   {
+      slug: "deepseek/deepseek-chat-v3.1",
+      url: "chat.deepseek.com",
+   },
+   {
+      slug: "deepseek/deepseek-r1-0528",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-R1-0528",
+   },
+   {
+      slug: "deepseek/deepseek-r1",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-R1",
+   },
+   {
+      slug: "deepseek/deepseek-prover-v2",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-Prover-V2-671B",
+      err: errors.New(`due to low usage this model has been replaced by
+      deepseek-ai/DeepSeek-V3-0324`),
+   },
+   {
+      slug: "deepseek/deepseek-chat-v3-0324",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-V3-0324",
+   },
+   {
+      slug: "deepseek/deepseek-r1-distill-llama-70b",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+   },
+   {
+      slug: "deepseek/deepseek-r1-distill-qwen-32b",
+      url: "deepinfra.com/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+   },
+   //////////////////////////////////////////////////////////////////////////////
    {
       slug: "arcee-ai/spotlight",
       url:  "api.together.ai/playground/arcee_ai/arcee-spotlight",
+   },
+   {
+      slug: "arcee-ai/maestro-reasoning",
+      url:  "api.together.ai/playground/arcee-ai/maestro-reasoning",
    },
    {
       slug: "arcee-ai/virtuoso-large",
       url:  "api.together.ai/playground/arcee-ai/virtuoso-large",
    },
    //////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
-      slug: "bytedance/ui-tars-1.5-7b",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-chat-v3-0324",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-chat-v3.1",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-prover-v2",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-r1",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-r1-0528",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-r1-distill-llama-70b",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-r1-distill-qwen-32b",
-   },
-   {
-      err:  errUnverified,
-      slug: "deepseek/deepseek-v3.1-base",
-   },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-2.0-flash-001",
-   },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-2.0-flash-lite-001",
+      slug: "google/gemini-2.5-pro",
+      url: "gemini.google.com",
    },
    {
       slug: "google/gemini-2.5-flash",
+      url: "gemini.google.com",
    },
    {
       slug: "google/gemini-2.5-flash-lite",
       url:  "aistudio.google.com?model=gemini-2.5-flash-lite",
    },
    {
-      err:  errUnverified,
-      slug: "google/gemini-2.5-flash-lite-preview-06-17",
+      slug: "google/gemini-2.0-flash-001",
+      url: "aistudio.google.com/prompts/new_chat?model=gemini-2.0-flash",
+      err: errLegacy,
    },
    {
-      slug: "google/gemini-2.5-pro",
+      slug: "google/gemini-2.0-flash-lite-001",
+      url: "aistudio.google.com/prompts/new_chat?model=gemini-2.0-flash-lite",
+      err: errLegacy,
+   },
+   
+   {
+      slug: "google/gemini-pro-1.5",
+      err: errLegacy,
+   },
+   {
+      slug: "google/gemini-flash-1.5",
+      err: errLegacy,
+   },
+   {
+      slug: "google/gemini-flash-1.5-8b",
+      err: errLegacy,
+   },
+   {
+      err:  errUnverified,
+      slug: "google/gemini-2.5-flash-lite-preview-06-17",
    },
    {
       err:  errUnverified,
@@ -132,18 +155,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "google/gemini-2.5-pro-preview-05-06",
    },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-flash-1.5",
-   },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-flash-1.5-8b",
-   },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-pro-1.5",
-   },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "inception/mercury",
@@ -152,6 +164,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "inception/mercury-coder",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "meta-llama/llama-4-maverick",
@@ -164,14 +177,17 @@ var all_models = models{
       err:  errUnverified,
       slug: "meta-llama/llama-guard-4-12b",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "microsoft/mai-ds-r1",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "minimax/minimax-m1",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "mistralai/codestral-2508",
@@ -204,6 +220,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "mistralai/mistral-small-3.2-24b-instruct",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "moonshotai/kimi-dev-72b",
@@ -212,6 +229,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "moonshotai/kimi-vl-a3b-thinking",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "nousresearch/hermes-4-405b",
@@ -220,6 +238,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "nousresearch/hermes-4-70b",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "nvidia/llama-3.1-nemotron-ultra-253b-v1",
@@ -228,6 +247,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "nvidia/llama-3.3-nemotron-super-49b-v1",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "openai/codex-mini",
@@ -320,6 +340,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "openai/o4-mini-high",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "perplexity/r1-1776",
@@ -336,6 +357,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "perplexity/sonar-reasoning-pro",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "qwen/qwen3-235b-a22b-2507",
@@ -367,14 +389,17 @@ var all_models = models{
       err:  errUnverified,
       slug: "qwen/qwq-32b",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "switchpoint/router",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "tngtech/deepseek-r1t-chimera",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "x-ai/grok-3",
@@ -399,6 +424,7 @@ var all_models = models{
       err:  errUnverified,
       slug: "x-ai/grok-code-fast-1",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
       err:  errUnverified,
       slug: "z-ai/glm-4-32b",

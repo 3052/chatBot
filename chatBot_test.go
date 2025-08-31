@@ -26,10 +26,10 @@ func TestOne(t *testing.T) {
    }
    for _, one_model := range all_models {
       if !all_metadatas.contains(one_model) {
-         if one_model.ok {
-            t.Fatal(one_model, " missing from JSON")
-         } else {
+         if one_model.err != nil {
             t.Fatal(one_model.slug, " extra in all_models")
+         } else {
+            t.Fatal(one_model, " missing from JSON")
          }
       }
    }
