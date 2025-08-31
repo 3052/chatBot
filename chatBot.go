@@ -7,6 +7,36 @@ import (
    "time"
 )
 
+func delete_metadata(m *metadata) bool {
+   if m.ContextLength < 128000 {
+      return true
+   }
+   if m.Endpoint == nil {
+      return true
+   }
+   if m.Endpoint.ModelVariantSlug != m.Slug {
+      return true
+   }
+   const day = 24 * time.Hour
+   const month = 30 * day
+   if time.Since(m.UpdatedAt) >= 5*month {
+      return true
+   }
+   return m.WarningMessage != ""
+}
+
+type metadata struct {
+   Author        string
+   ContextLength int       `json:"context_length"`
+   Endpoint      *struct { // DELETE
+      ModelVariantSlug string `json:"model_variant_slug"`
+   }
+   ShortName string `json:"short_name"`
+   Slug      string
+   UpdatedAt time.Time `json:"updated_at"`
+   WarningMessage string `json:"warning_message"`
+}
+
 type byte_slice[T any] []byte
 
 func (m *metadatas) unmarshal(data byte_slice[metadatas]) error {
@@ -52,34 +82,4 @@ func get_metadatas() (byte_slice[metadatas], error) {
    }
    defer resp.Body.Close()
    return io.ReadAll(resp.Body)
-}
-
-type metadata struct {
-   Author        string
-   ContextLength int       `json:"context_length"`
-   Endpoint      *struct { // DELETE
-      ModelVariantSlug string `json:"model_variant_slug"`
-   }
-   ShortName string `json:"short_name"`
-   Slug      string
-   UpdatedAt time.Time `json:"updated_at"`
-   WarningMessage string `json:"warning_message"`
-}
-
-func delete_metadata(m *metadata) bool {
-   if m.ContextLength < 128000 {
-      return true
-   }
-   if m.Endpoint == nil {
-      return true
-   }
-   if m.Endpoint.ModelVariantSlug != m.Slug {
-      return true
-   }
-   const day = 24 * time.Hour
-   const month = 30 * day
-   if time.Since(m.UpdatedAt) >= 5*month {
-      return true
-   }
-   return m.WarningMessage != ""
 }

@@ -12,6 +12,7 @@ type model struct {
 
 var (
    errLegacy = errors.New("legacy")
+   errPreview = errors.New("preview")
    errUnverified = errors.New("unverified")
 )
 
@@ -103,30 +104,14 @@ var all_models = models{
       url:  "api.together.ai/playground/arcee-ai/virtuoso-large",
    },
    //////////////////////////////////////////////////////////////////////////////
-   //////////////////////////////////////////////////////////////////////////////
-   {
-      slug: "google/gemini-2.5-pro",
-      url: "gemini.google.com",
-   },
-   {
-      slug: "google/gemini-2.5-flash",
-      url: "gemini.google.com",
-   },
-   {
-      slug: "google/gemini-2.5-flash-lite",
-      url:  "aistudio.google.com?model=gemini-2.5-flash-lite",
-   },
    {
       slug: "google/gemini-2.0-flash-001",
-      url: "aistudio.google.com/prompts/new_chat?model=gemini-2.0-flash",
       err: errLegacy,
    },
    {
       slug: "google/gemini-2.0-flash-lite-001",
-      url: "aistudio.google.com/prompts/new_chat?model=gemini-2.0-flash-lite",
       err: errLegacy,
    },
-   
    {
       slug: "google/gemini-pro-1.5",
       err: errLegacy,
@@ -140,165 +125,174 @@ var all_models = models{
       err: errLegacy,
    },
    {
-      err:  errUnverified,
-      slug: "google/gemini-2.5-flash-lite-preview-06-17",
-   },
-   {
-      err:  errUnverified,
-      slug: "google/gemini-2.5-pro-exp-03-25",
-   },
-   {
-      err:  errUnverified,
       slug: "google/gemini-2.5-pro-preview",
+      err: errPreview,
    },
    {
-      err:  errUnverified,
+      slug: "google/gemini-2.5-flash-lite-preview-06-17",
+      err: errPreview,
+   },
+   {
       slug: "google/gemini-2.5-pro-preview-05-06",
+      err: errPreview,
+   },
+   {
+      slug: "google/gemini-2.5-pro",
+      url: "gemini.google.com",
+   },
+   {
+      slug: "google/gemini-2.5-flash",
+      url: "gemini.google.com",
+   },
+   {
+      slug: "google/gemini-2.5-flash-lite",
+      url: "aistudio.google.com/prompts/new_chat?model=gemini-2.5-flash-lite",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "inception/mercury",
+      url: "chat.inceptionlabs.ai",
    },
    {
-      err:  errUnverified,
       slug: "inception/mercury-coder",
+      url: "chat.inceptionlabs.ai",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
-      slug: "meta-llama/llama-4-maverick",
-   },
-   {
-      err:  errUnverified,
       slug: "meta-llama/llama-4-scout",
+      url: "deepinfra.com/meta-llama/Llama-4-Scout-17B-16E-Instruct",
    },
    {
-      err:  errUnverified,
+      slug: "meta-llama/llama-4-maverick",
+      url: "deepinfra.com/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+   },
+   {
       slug: "meta-llama/llama-guard-4-12b",
+      url: "deepinfra.com/meta-llama/Llama-Guard-4-12B",
    },
    //////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "microsoft/mai-ds-r1",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "minimax/minimax-m1",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "mistralai/codestral-2508",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/devstral-medium",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/devstral-small",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/devstral-small-2505",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/mistral-medium-3",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/mistral-medium-3.1",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/mistral-small-3.1-24b-instruct",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "mistralai/mistral-small-3.2-24b-instruct",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "moonshotai/kimi-dev-72b",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "moonshotai/kimi-vl-a3b-thinking",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "nousresearch/hermes-4-405b",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "nousresearch/hermes-4-70b",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "nvidia/llama-3.3-nemotron-super-49b-v1",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "openai/codex-mini",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4.1",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4.1-mini",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4.1-nano",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-2024-05-13",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-2024-08-06",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-2024-11-20",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-audio-preview",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-mini",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-mini-2024-07-18",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-mini-search-preview",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/gpt-4o-search-preview",
+      err:  errUnverified,
    },
    {
       slug: "openai/gpt-5",
@@ -325,116 +319,112 @@ var all_models = models{
       url:  "gpt-oss.com",
    },
    {
-      err:  errUnverified,
       slug: "openai/o3",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
-      slug: "openai/o3-pro",
-   },
-   {
-      err:  errUnverified,
       slug: "openai/o4-mini",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "openai/o4-mini-high",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "perplexity/r1-1776",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "perplexity/sonar-deep-research",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "perplexity/sonar-pro",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "perplexity/sonar-reasoning-pro",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-235b-a22b-2507",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-235b-a22b-thinking-2507",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-30b-a3b-instruct-2507",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-30b-a3b-thinking-2507",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-8b",
+      err:  errUnverified,
    },
    {
       slug: "qwen/qwen3-coder",
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwen3-coder-30b-a3b-instruct",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "qwen/qwq-32b",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "switchpoint/router",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "tngtech/deepseek-r1t-chimera",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "x-ai/grok-3",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "x-ai/grok-3-beta",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "x-ai/grok-3-mini",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "x-ai/grok-3-mini-beta",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "x-ai/grok-4",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "x-ai/grok-code-fast-1",
+      err:  errUnverified,
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      err:  errUnverified,
       slug: "z-ai/glm-4-32b",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "z-ai/glm-4.5",
+      err:  errUnverified,
    },
    {
-      err:  errUnverified,
       slug: "z-ai/glm-4.5-air",
+      err:  errUnverified,
    },
 }

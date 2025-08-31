@@ -29,7 +29,7 @@ func TestOne(t *testing.T) {
          if one_model.err != nil {
             t.Fatal(one_model.slug, " extra in all_models")
          } else {
-            t.Fatal(one_model, " missing from JSON")
+            t.Fatal(one_model.slug, " missing from JSON")
          }
       }
    }
