@@ -13,34 +13,30 @@ func TestOne(t *testing.T) {
    if err != nil {
       t.Fatal(err)
    }
-   var modelsVar models
-   err = modelsVar.unmarshal(data)
+   var all_metadatas metadatas
+   err = all_metadatas.unmarshal(data)
    if err != nil {
       t.Fatal(err)
    }
-   modelsVar = slices.DeleteFunc(modelsVar, delete_model)
-   // too many?
-   for _, modelVar := range modelsVar {
-      _, ok := canonical[modelVar.Slug]
-      if !ok {
-         t.Fatal(modelVar.Slug)
+   all_metadatas = slices.DeleteFunc(all_metadatas, delete_metadata)
+   for _, one_metadata := range all_metadatas {
+      if !all_models.contains(one_metadata) {
+         t.Fatal(one_metadata, " missing from all_models")
       }
    }
-   // too few?
-   for key, value := range canonical {
-      if value {
-         i := slices.IndexFunc(modelsVar, func(m *model) bool {
-            return m.Slug == key
-         })
-         if i == -1 {
-            t.Fatal(key)
+   for _, one_model := range all_models {
+      if !all_metadatas.contains(one_model) {
+         if one_model.ok {
+            t.Fatal(one_model, " missing from JSON")
+         } else {
+            t.Fatal(one_model.slug, " extra in all_models")
          }
       }
    }
 }
 
 func TestZero(t *testing.T) {
-   data, err := get_models()
+   data, err := get_metadatas()
    if err != nil {
       t.Fatal(err)
    }

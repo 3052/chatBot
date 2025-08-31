@@ -1,315 +1,414 @@
 package chatBot
 
-var all_models = []struct {
-   ok   bool
+import "errors"
+
+type models []*model
+
+type model struct {
+   err  error
    slug string
    url  string
-}{
+}
+
+var errUnverified = errors.New("unverified")
+
+var all_models = models{
    {
       slug: "ai21/jamba-large-1.7",
+      url:  "studio.ai21.com",
    },
    {
       slug: "ai21/jamba-mini-1.7",
+      url:  "studio.ai21.com",
    },
    {
+      err:  errUnverified,
       slug: "anthropic/claude-3.5-haiku-20241022",
    },
    {
+      err:  errUnverified,
       slug: "anthropic/claude-3.5-sonnet",
    },
    {
+      err:  errUnverified,
       slug: "anthropic/claude-3.5-sonnet-20240620",
    },
    {
+      err:  errUnverified,
       slug: "anthropic/claude-3.7-sonnet",
    },
    {
+      err:  errUnverified,
       slug: "anthropic/claude-opus-4",
    },
    {
       slug: "anthropic/claude-opus-4.1",
-      ok:   true,
+      url:  "claude.ai",
    },
    {
       slug: "anthropic/claude-sonnet-4",
-      ok:   true,
+      url:  "claude.ai",
    },
    {
       slug: "arcee-ai/maestro-reasoning",
+      url:  "api.together.ai/playground/arcee-ai/maestro-reasoning",
    },
    {
       slug: "arcee-ai/spotlight",
+      url:  "api.together.ai/playground/arcee_ai/arcee-spotlight",
    },
    {
       slug: "arcee-ai/virtuoso-large",
+      url:  "api.together.ai/playground/arcee-ai/virtuoso-large",
    },
+   //////////////////////////////////////////////////////////////////////////////
    {
+      err:  errUnverified,
       slug: "bytedance/ui-tars-1.5-7b",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-chat-v3-0324",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-chat-v3.1",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-prover-v2",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-r1",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-r1-0528",
    },
    {
+      err:  errUnverified,
       slug: "deepseek/deepseek-r1-distill-llama-70b",
    },
    {
-      slug: "deepseek/deepseek-r1-distill-qwen-1.5b",
-   },
-   {
+      err:  errUnverified,
       slug: "deepseek/deepseek-r1-distill-qwen-32b",
    },
    {
-      slug: "deepseek/deepseek-v3-base",
-   },
-   {
+      err:  errUnverified,
       slug: "deepseek/deepseek-v3.1-base",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.0-flash-001",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.0-flash-lite-001",
    },
    {
       slug: "google/gemini-2.5-flash",
-      ok:   true,
    },
    {
       slug: "google/gemini-2.5-flash-lite",
-      ok:   true,
       url:  "aistudio.google.com?model=gemini-2.5-flash-lite",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.5-flash-lite-preview-06-17",
    },
    {
       slug: "google/gemini-2.5-pro",
-      ok:   true,
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.5-pro-exp-03-25",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.5-pro-preview",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-2.5-pro-preview-05-06",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-flash-1.5",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-flash-1.5-8b",
    },
    {
+      err:  errUnverified,
       slug: "google/gemini-pro-1.5",
    },
    {
+      err:  errUnverified,
       slug: "inception/mercury",
    },
    {
+      err:  errUnverified,
       slug: "inception/mercury-coder",
    },
    {
+      err:  errUnverified,
       slug: "meta-llama/llama-4-maverick",
    },
    {
+      err:  errUnverified,
       slug: "meta-llama/llama-4-scout",
    },
    {
+      err:  errUnverified,
       slug: "meta-llama/llama-guard-4-12b",
    },
    {
+      err:  errUnverified,
       slug: "microsoft/mai-ds-r1",
    },
    {
+      err:  errUnverified,
       slug: "minimax/minimax-m1",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/codestral-2508",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/devstral-medium",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/devstral-small",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/devstral-small-2505",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/mistral-medium-3",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/mistral-medium-3.1",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/mistral-small-3.1-24b-instruct",
    },
    {
+      err:  errUnverified,
       slug: "mistralai/mistral-small-3.2-24b-instruct",
    },
    {
+      err:  errUnverified,
+      slug: "moonshotai/kimi-dev-72b",
+   },
+   {
+      err:  errUnverified,
       slug: "moonshotai/kimi-vl-a3b-thinking",
    },
    {
+      err:  errUnverified,
+      slug: "nousresearch/hermes-4-405b",
+   },
+   {
+      err:  errUnverified,
+      slug: "nousresearch/hermes-4-70b",
+   },
+   {
+      err:  errUnverified,
       slug: "nvidia/llama-3.1-nemotron-ultra-253b-v1",
    },
    {
+      err:  errUnverified,
       slug: "nvidia/llama-3.3-nemotron-super-49b-v1",
    },
    {
+      err:  errUnverified,
       slug: "openai/codex-mini",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4.1",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4.1-mini",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4.1-nano",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-2024-05-13",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-2024-08-06",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-2024-11-20",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-audio-preview",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-mini",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-mini-2024-07-18",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-mini-search-preview",
    },
    {
+      err:  errUnverified,
       slug: "openai/gpt-4o-search-preview",
    },
    {
       slug: "openai/gpt-5",
-      ok:   true,
       url:  "platform.openai.com/docs/models/gpt-5",
    },
    {
       slug: "openai/gpt-5-chat",
-      ok:   true,
       url:  "chatgpt.com?model=gpt-5",
    },
    {
       slug: "openai/gpt-5-mini",
-      ok:   true,
       url:  "platform.openai.com/docs/models/gpt-5-mini",
    },
    {
       slug: "openai/gpt-5-nano",
-      ok:   true,
       url:  "platform.openai.com/docs/models/gpt-5-nano",
    },
    {
       slug: "openai/gpt-oss-120b",
-      ok:   true,
       url:  "gpt-oss.com",
    },
    {
       slug: "openai/gpt-oss-20b",
-      ok:   true,
       url:  "gpt-oss.com",
    },
    {
+      err:  errUnverified,
       slug: "openai/o3",
    },
    {
+      err:  errUnverified,
       slug: "openai/o3-pro",
    },
    {
+      err:  errUnverified,
       slug: "openai/o4-mini",
    },
    {
+      err:  errUnverified,
       slug: "openai/o4-mini-high",
    },
    {
+      err:  errUnverified,
       slug: "perplexity/r1-1776",
    },
    {
+      err:  errUnverified,
       slug: "perplexity/sonar-deep-research",
    },
    {
+      err:  errUnverified,
       slug: "perplexity/sonar-pro",
    },
    {
+      err:  errUnverified,
       slug: "perplexity/sonar-reasoning-pro",
    },
    {
+      err:  errUnverified,
       slug: "qwen/qwen3-235b-a22b-2507",
    },
    {
+      err:  errUnverified,
       slug: "qwen/qwen3-235b-a22b-thinking-2507",
    },
    {
+      err:  errUnverified,
       slug: "qwen/qwen3-30b-a3b-instruct-2507",
    },
    {
+      err:  errUnverified,
+      slug: "qwen/qwen3-30b-a3b-thinking-2507",
+   },
+   {
+      err:  errUnverified,
       slug: "qwen/qwen3-8b",
    },
    {
       slug: "qwen/qwen3-coder",
-      ok:   true,
    },
    {
+      err:  errUnverified,
+      slug: "qwen/qwen3-coder-30b-a3b-instruct",
+   },
+   {
+      err:  errUnverified,
       slug: "qwen/qwq-32b",
    },
    {
+      err:  errUnverified,
       slug: "switchpoint/router",
    },
    {
+      err:  errUnverified,
       slug: "tngtech/deepseek-r1t-chimera",
    },
    {
+      err:  errUnverified,
       slug: "x-ai/grok-3",
    },
    {
+      err:  errUnverified,
       slug: "x-ai/grok-3-beta",
    },
    {
+      err:  errUnverified,
       slug: "x-ai/grok-3-mini",
    },
    {
+      err:  errUnverified,
       slug: "x-ai/grok-3-mini-beta",
    },
    {
+      err:  errUnverified,
       slug: "x-ai/grok-4",
    },
    {
+      err:  errUnverified,
+      slug: "x-ai/grok-code-fast-1",
+   },
+   {
+      err:  errUnverified,
       slug: "z-ai/glm-4-32b",
    },
    {
+      err:  errUnverified,
       slug: "z-ai/glm-4.5",
    },
    {
+      err:  errUnverified,
       slug: "z-ai/glm-4.5-air",
    },
 }
