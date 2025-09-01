@@ -12,6 +12,50 @@ import (
    "time"
 )
 
+const pattern = "internal/*/chatBot.json"
+
+func main() {
+   names, err := filepath.Glob(pattern)
+   if err != nil {
+      panic(err)
+   }
+   file, err := os.Create("chatBot.csv")
+   if err != nil {
+      panic(err)
+   }
+   write := csv.NewWriter(file)
+   err = write.Write(new(chatBot).header())
+   if err != nil {
+      panic(err)
+   }
+   for _, name := range names {
+      var bot chatBot
+      err = bot.get_json(name)
+      if err != nil {
+         panic(err)
+      }
+      if bot.Ok {
+         dir := filepath.Dir(name)
+         err = bot.get_md(dir + "/readme.md")
+         if err != nil {
+            panic(err)
+         }
+         err = bot.get_go(dir + "/chatBot.go")
+         if err != nil {
+            panic(err)
+         }
+      }
+      err = write.Write(bot.record())
+      if err != nil {
+         panic(err)
+      }
+   }
+   write.Flush()
+   err = write.Error()
+   if err != nil {
+      panic(err)
+   }
+}
 func (c *chatBot) get_md(name string) error {
    data, err := os.ReadFile(name)
    if err != nil {
@@ -121,48 +165,5 @@ func (c *chatBot) record() []string {
       fmt.Sprint(c.median),
       fmt.Sprint(c.sum),
       fmt.Sprint(c.loc),
-   }
-}
-
-func main() {
-   names, err := filepath.Glob("*/chatBot.json")
-   if err != nil {
-      panic(err)
-   }
-   file, err := os.Create("chatBot.csv")
-   if err != nil {
-      panic(err)
-   }
-   write := csv.NewWriter(file)
-   err = write.Write(new(chatBot).header())
-   if err != nil {
-      panic(err)
-   }
-   for _, name := range names {
-      var bot chatBot
-      err = bot.get_json(name)
-      if err != nil {
-         panic(err)
-      }
-      if bot.Ok {
-         dir := filepath.Dir(name)
-         err = bot.get_md(dir + "/readme.md")
-         if err != nil {
-            panic(err)
-         }
-         err = bot.get_go(dir + "/chatBot.go")
-         if err != nil {
-            panic(err)
-         }
-      }
-      err = write.Write(bot.record())
-      if err != nil {
-         panic(err)
-      }
-   }
-   write.Flush()
-   err = write.Error()
-   if err != nil {
-      panic(err)
    }
 }

@@ -10,7 +10,19 @@ import (
    "testing"
 )
 
+func TestTwo(t *testing.T) {
+   var count int
+   for _, one_model := range all_models {
+      if one_model.ok {
+         fmt.Print(one_model, "\n\n")
+         count++
+      }
+   }
+   log.Println("count", count)
+}
+
 func TestOne(t *testing.T) {
+   log.SetFlags(log.Ltime)
    data, err := os.ReadFile("ignore/chatBot.json")
    if err != nil {
       t.Fatal(err)
@@ -21,26 +33,17 @@ func TestOne(t *testing.T) {
       t.Fatal(err)
    }
    all_metadatas = slices.DeleteFunc(all_metadatas, delete_metadata)
+   log.Println("len(all_metadatas)", len(all_metadatas))
    for _, one_metadata := range all_metadatas {
       if !all_models.contains(one_metadata) {
-         t.Fatal(one_metadata, " missing from all_models")
+         t.Fatal(one_metadata.Slug, " missing from all_models")
       }
    }
-   var count int
    for _, one_model := range all_models {
-      if one_model.err == nil {
-         fmt.Print(one_model, "\n\n")
-         count++
-      }
       if !all_metadatas.contains(one_model) {
-         if one_model.err != nil {
-            t.Fatal(one_model.slug, " extra in all_models")
-         } else {
-            t.Fatal(one_model.slug, " missing from JSON")
-         }
+         t.Fatal(one_model.slug, " extra in all_models")
       }
    }
-   log.Println("count", count)
 }
 
 func TestZero(t *testing.T) {

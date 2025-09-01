@@ -2,10 +2,23 @@ package chatBot
 
 import (
    "encoding/json"
+   "fmt"
    "io"
    "net/http"
    "time"
 )
+
+func (m *model) String() string {
+   b := fmt.Appendln(nil, "slug =", m.slug)
+   b = fmt.Append(b, "url = ", m.url)
+   if m.info != "" {
+      b = fmt.Append(b, "\ninfo = ", m.info)
+   }
+   if m.ok {
+      b = append(b, "\nok = true"...)
+   }
+   return string(b)
+}
 
 func delete_metadata(m *metadata) bool {
    if m.ContextLength < 128000 {
@@ -19,7 +32,9 @@ func delete_metadata(m *metadata) bool {
    }
    const day = 24 * time.Hour
    const month = 30 * day
-   if time.Since(m.UpdatedAt) >= 5*month {
+   // 6 month is 150
+   const updated_at = 5 * month
+   if time.Since(m.UpdatedAt) >= updated_at {
       return true
    }
    return m.WarningMessage != ""
