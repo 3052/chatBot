@@ -8,18 +8,6 @@ import (
    "time"
 )
 
-func (m *model) String() string {
-   b := fmt.Appendln(nil, "slug =", m.slug)
-   b = fmt.Append(b, "url = ", m.url)
-   if m.info != "" {
-      b = fmt.Append(b, "\ninfo = ", m.info)
-   }
-   if m.ok {
-      b = append(b, "\nok = true"...)
-   }
-   return string(b)
-}
-
 func delete_metadata(m *metadata) bool {
    if m.ContextLength < 128000 {
       return true
@@ -40,6 +28,8 @@ func delete_metadata(m *metadata) bool {
    return m.WarningMessage != ""
 }
 
+type byte_slice[T any] []byte
+
 type metadata struct {
    Author        string
    ContextLength int       `json:"context_length"`
@@ -51,8 +41,6 @@ type metadata struct {
    UpdatedAt      time.Time `json:"updated_at"`
    WarningMessage string    `json:"warning_message"`
 }
-
-type byte_slice[T any] []byte
 
 func (m *metadatas) unmarshal(data byte_slice[metadatas]) error {
    var value struct {
@@ -70,6 +58,27 @@ func (m *metadatas) unmarshal(data byte_slice[metadatas]) error {
 
 type metadatas []*metadata
 
+func (a metadatas) contains(b *model) bool {
+   for _, a1 := range a {
+      if a1.Slug == b.slug {
+         return true
+      }
+   }
+   return false
+}
+
+func (m *model) String() string {
+   b := fmt.Appendln(nil, "slug =", m.slug)
+   b = fmt.Append(b, "url = ", m.url)
+   if m.info != "" {
+      b = fmt.Append(b, "\ninfo = ", m.info)
+   }
+   if m.ok {
+      b = append(b, "\nok = true"...)
+   }
+   return string(b)
+}
+
 func (a models) contains(b *metadata) bool {
    for _, a1 := range a {
       if a1.slug == b.Slug {
@@ -79,14 +88,7 @@ func (a models) contains(b *metadata) bool {
    return false
 }
 
-func (a metadatas) contains(b *model) bool {
-   for _, a1 := range a {
-      if a1.Slug == b.slug {
-         return true
-      }
-   }
-   return false
-}
+///
 
 func get_metadatas() (byte_slice[metadatas], error) {
    req, _ := http.NewRequest("", "https://openrouter.ai", nil)

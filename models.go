@@ -9,11 +9,7 @@ type model struct {
 
 type models []*model
 
-const (
-   mayTrain = "paid endpoints that may train on inputs"
-
-   legacyModel = "legacy model"
-)
+const mayTrain = "paid endpoints that may train on inputs"
 
 var all_models = models{
    {
@@ -28,6 +24,28 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
+      slug: "anthropic/claude-3.5-haiku-20241022",
+      url:  "https://console.anthropic.com/workbench",
+      info: "latest",
+      ok:   true,
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet",
+      info: "replaced by claude-sonnet-4",
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet-20240620",
+      info: "replaced by claude-sonnet-4",
+   },
+   {
+      slug: "anthropic/claude-3.7-sonnet",
+      info: "replaced by claude-sonnet-4",
+   },
+   {
+      slug: "anthropic/claude-opus-4",
+      info: "replaced by claude-opus-4.1",
+   },
+   {
       slug: "anthropic/claude-opus-4.1",
       url:  "https://claude.ai",
       info: "latest",
@@ -39,37 +57,15 @@ var all_models = models{
       info: "latest",
       ok:   true,
    },
-   {
-      slug: "anthropic/claude-3.5-haiku-20241022",
-      url:  "https://console.anthropic.com/workbench",
-      info: "latest",
-      ok:   true,
-   },
-   {
-      slug: "anthropic/claude-opus-4",
-      info: "replaced by claude-opus-4.1",
-   },
-   {
-      slug: "anthropic/claude-3.7-sonnet",
-      info: "replaced by claude-sonnet-4",
-   },
-   {
-      slug: "anthropic/claude-3.5-sonnet",
-      info: "replaced by claude-sonnet-4",
-   },
-   {
-      slug: "anthropic/claude-3.5-sonnet-20240620",
-      info: "replaced by claude-sonnet-4",
-   },
    //////////////////////////////////////////////////////////////////////////////
-   {
-      slug: "arcee-ai/spotlight",
-      url:  "https://api.together.ai/playground/arcee_ai/arcee-spotlight",
-      ok:   true,
-   },
    {
       slug: "arcee-ai/maestro-reasoning",
       url:  "https://api.together.ai/playground/arcee-ai/maestro-reasoning",
+      ok:   true,
+   },
+   {
+      slug: "arcee-ai/spotlight",
+      url:  "https://api.together.ai/playground/arcee_ai/arcee-spotlight",
       ok:   true,
    },
    {
@@ -98,6 +94,10 @@ var all_models = models{
       info: "replaced by deepseek-chat-v3.1",
    },
    {
+      slug: "deepseek/deepseek-r1",
+      info: "replaced by deepseek-r1-0528",
+   },
+   {
       slug: "deepseek/deepseek-r1-0528",
       url:  "https://deepinfra.com/deepseek-ai/DeepSeek-R1-0528",
       ok:   true,
@@ -111,10 +111,6 @@ var all_models = models{
       slug: "deepseek/deepseek-r1-distill-qwen-32b",
       url:  "https://deepinfra.com/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
       ok:   true,
-   },
-   {
-      slug: "deepseek/deepseek-r1",
-      info: "replaced by deepseek-r1-0528",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
@@ -177,8 +173,8 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "meta-llama/llama-4-scout",
-      url:  "https://deepinfra.com/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      slug: "meta-llama/llama-guard-4-12b",
+      url:  "https://deepinfra.com/meta-llama/Llama-Guard-4-12B",
       ok:   true,
    },
    {
@@ -187,8 +183,8 @@ var all_models = models{
       ok:   true,
    },
    {
-      slug: "meta-llama/llama-guard-4-12b",
-      url:  "https://deepinfra.com/meta-llama/Llama-Guard-4-12B",
+      slug: "meta-llama/llama-4-scout",
+      url:  "https://deepinfra.com/meta-llama/Llama-4-Scout-17B-16E-Instruct",
       ok:   true,
    },
    //////////////////////////////////////////////////////////////////////////////
@@ -222,11 +218,11 @@ var all_models = models{
    },
    {
       slug: "mistralai/devstral-small-2505",
-      info: "replaced by devstral-small-2507",
+      info: "replaced by devstral-small",
    },
    {
       slug: "mistralai/mistral-medium-3",
-      info: "replaced by mistral-medium-2508",
+      info: "replaced by mistral-medium-3.1",
    },
    {
       slug: "mistralai/mistral-medium-3.1",
@@ -236,7 +232,7 @@ var all_models = models{
    },
    {
       slug: "mistralai/mistral-small-3.1-24b-instruct",
-      info: "replaced by mistral-small-2506",
+      info: "replaced by mistral-small-3.2-24b-instruct",
    },
    {
       slug: "mistralai/mistral-small-3.2-24b-instruct",
@@ -278,19 +274,11 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "openai/gpt-oss-120b",
-      url:  "https://gpt-oss.com",
-      ok:   true,
-   },
-   {
-      slug: "openai/gpt-oss-20b",
-      url:  "https://gpt-oss.com",
-      ok:   true,
-   },
-   {
-      slug: "openai/gpt-5-chat",
-      url:  "https://chatgpt.com?model=gpt-5",
-      ok:   true,
+      slug: "openai/codex-mini",
+      url:  "https://platform.openai.com/docs/models/codex-mini-latest",
+      info: `codex-mini-latest is a fine-tuned version of o4-mini specifically
+      for use in Codex CLI. For direct use in the API, we recommend starting with
+      gpt-4.1`,
    },
    {
       slug: "openai/gpt-4.1",
@@ -299,11 +287,6 @@ var all_models = models{
    {
       slug: "openai/gpt-4.1-mini",
       info: "replaced by gpt-5-mini",
-   },
-   {
-      slug: "openai/gpt-5-nano",
-      url:  "https://platform.openai.com/docs/models/gpt-5-nano",
-      ok:   true,
    },
    {
       slug: "openai/gpt-4.1-nano",
@@ -342,13 +325,38 @@ var all_models = models{
       info: "replaced by gpt-5-mini",
    },
    {
+      slug: "openai/gpt-4o-search-preview",
+      info: "replaced by gpt-5",
+   },
+   {
       slug: "openai/gpt-5",
       url:  "https://platform.openai.com/docs/models/gpt-5",
       ok:   true,
    },
    {
-      slug: "openai/gpt-4o-search-preview",
-      info: "replaced by gpt-5",
+      slug: "openai/gpt-5-chat",
+      url:  "https://chatgpt.com?model=gpt-5",
+      ok:   true,
+   },
+   {
+      slug: "openai/gpt-5-mini",
+      url:  "https://platform.openai.com/docs/models/gpt-5-mini",
+      ok:   true,
+   },
+   {
+      slug: "openai/gpt-5-nano",
+      url:  "https://platform.openai.com/docs/models/gpt-5-nano",
+      ok:   true,
+   },
+   {
+      slug: "openai/gpt-oss-20b",
+      url:  "https://gpt-oss.com",
+      ok:   true,
+   },
+   {
+      slug: "openai/gpt-oss-120b",
+      url:  "https://gpt-oss.com",
+      ok:   true,
    },
    {
       slug: "openai/o3",
@@ -362,27 +370,16 @@ var all_models = models{
       slug: "openai/o4-mini-high",
       info: "replaced by gpt-5-mini",
    },
-   {
-      slug: "openai/gpt-5-mini",
-      url:  "https://platform.openai.com/docs/models/gpt-5-mini",
-      ok:   true,
-   },
-   {
-      slug: "openai/codex-mini",
-      url:  "https://platform.openai.com/docs/models/codex-mini-latest",
-      info: `codex-mini-latest is a fine-tuned version of o4-mini specifically
-      for use in Codex CLI. For direct use in the API, we recommend starting with
-      gpt-4.1`,
-   },
-   //////////////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////
    {
       slug: "perplexity/r1-1776",
+      url:  "https://openrouter.ai/chat?models=perplexity/r1-1776",
       info: `provider returned error: {"error":{"code":400}}`,
    },
    {
       slug: "perplexity/sonar-deep-research",
-      info: legacyModel,
+      url:  "https://openrouter.ai/chat?models=perplexity/sonar-deep-research",
+      ok:   true,
    },
    {
       slug: "perplexity/sonar-pro",
@@ -407,8 +404,7 @@ var all_models = models{
    },
    {
       slug: "qwen/qwen3-30b-a3b-thinking-2507",
-      url:  "https://chat.qwen.ai",
-      ok:   true,
+      info: "variant of qwen3-30b-a3b-instruct-2507",
    },
    {
       slug: "qwen/qwen3-235b-a22b-2507",
@@ -417,17 +413,17 @@ var all_models = models{
    },
    {
       slug: "qwen/qwen3-235b-a22b-thinking-2507",
-      url:  "https://chat.qwen.ai",
+      info: "variant of qwen3-235b-a22b-2507",
+   },
+   {
+      slug: "qwen/qwen3-coder-30b-a3b-instruct",
+      url:  "https://openrouter.ai/chat?models=qwen/qwen3-coder-30b-a3b-instruct",
       ok:   true,
    },
    {
       slug: "qwen/qwen3-coder",
       url:  "https://chat.qwen.ai",
-      ok:   true,
-   },
-   {
-      slug: "qwen/qwen3-coder-30b-a3b-instruct",
-      url:  "https://openrouter.ai/chat?models=qwen/qwen3-coder-30b-a3b-instruct",
+      info: "Qwen3 Coder 480B A35B",
       ok:   true,
    },
    {
@@ -477,17 +473,16 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
+      slug: "z-ai/glm-4-32b",
+      info: "replaced by glm-4.5",
+   },
+   {
       slug: "z-ai/glm-4.5",
       url:  "https://chat.z.ai",
       ok:   true,
    },
    {
       slug: "z-ai/glm-4.5-air",
-      url:  "https://chat.z.ai",
-      ok:   true,
-   },
-   {
-      slug: "z-ai/glm-4-32b",
       url:  "https://chat.z.ai",
       ok:   true,
    },
