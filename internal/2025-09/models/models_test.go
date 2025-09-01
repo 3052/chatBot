@@ -1,4 +1,4 @@
-package chatBot
+package models
 
 import (
    "bytes"
