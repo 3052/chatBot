@@ -10,9 +10,9 @@ type model struct {
 type models []*model
 
 const (
-   legacyModel  = "legacy model"
-   mayTrain   = "paid endpoints that may train on inputs"
-   previewModel = "preview model"
+   mayTrain = "paid endpoints that may train on inputs"
+
+   legacyModel = "legacy model"
 )
 
 var all_models = models{
@@ -28,34 +28,38 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "anthropic/claude-3.5-haiku-20241022",
-      info: legacyModel,
-   },
-   {
-      slug: "anthropic/claude-3.5-sonnet",
-      info: legacyModel,
-   },
-   {
-      slug: "anthropic/claude-3.5-sonnet-20240620",
-      info: legacyModel,
-   },
-   {
-      slug: "anthropic/claude-3.7-sonnet",
-      info: legacyModel,
-   },
-   {
-      slug: "anthropic/claude-opus-4",
-      info: legacyModel,
-   },
-   {
       slug: "anthropic/claude-opus-4.1",
       url:  "https://claude.ai",
+      info: "latest",
       ok:   true,
    },
    {
       slug: "anthropic/claude-sonnet-4",
       url:  "https://claude.ai",
+      info: "latest",
       ok:   true,
+   },
+   {
+      slug: "anthropic/claude-3.5-haiku-20241022",
+      url:  "https://console.anthropic.com/workbench",
+      info: "latest",
+      ok:   true,
+   },
+   {
+      slug: "anthropic/claude-opus-4",
+      info: "replaced by claude-opus-4.1",
+   },
+   {
+      slug: "anthropic/claude-3.7-sonnet",
+      info: "replaced by claude-sonnet-4",
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet",
+      info: "replaced by claude-sonnet-4",
+   },
+   {
+      slug: "anthropic/claude-3.5-sonnet-20240620",
+      info: "replaced by claude-sonnet-4",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
@@ -81,28 +85,21 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
+      slug: "deepseek/deepseek-chat-v3-0324",
+      info: "replaced by deepseek-chat-v3.1",
+   },
+   {
       slug: "deepseek/deepseek-chat-v3.1",
       url:  "https://chat.deepseek.com",
       ok:   true,
    },
    {
+      slug: "deepseek/deepseek-prover-v2",
+      info: "replaced by deepseek-chat-v3.1",
+   },
+   {
       slug: "deepseek/deepseek-r1-0528",
       url:  "https://deepinfra.com/deepseek-ai/DeepSeek-R1-0528",
-      ok:   true,
-   },
-   {
-      slug: "deepseek/deepseek-r1",
-      url:  "https://deepinfra.com/deepseek-ai/DeepSeek-R1",
-      ok:   true,
-   },
-   {
-      slug: "deepseek/deepseek-prover-v2",
-      url:  "https://deepinfra.com/deepseek-ai/DeepSeek-Prover-V2-671B",
-      info: "due to low usage this model has been replaced by\n      deepseek-ai/DeepSeek-V3-0324",
-   },
-   {
-      slug: "deepseek/deepseek-chat-v3-0324",
-      url:  "https://deepinfra.com/deepseek-ai/DeepSeek-V3-0324",
       ok:   true,
    },
    {
@@ -115,43 +112,18 @@ var all_models = models{
       url:  "https://deepinfra.com/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
       ok:   true,
    },
+   {
+      slug: "deepseek/deepseek-r1",
+      info: "replaced by deepseek-r1-0528",
+   },
    //////////////////////////////////////////////////////////////////////////////
    {
       slug: "google/gemini-2.0-flash-001",
-      info: legacyModel,
+      info: "replaced by gemini-2.5-flash",
    },
    {
       slug: "google/gemini-2.0-flash-lite-001",
-      info: legacyModel,
-   },
-   {
-      slug: "google/gemini-pro-1.5",
-      info: legacyModel,
-   },
-   {
-      slug: "google/gemini-flash-1.5",
-      info: legacyModel,
-   },
-   {
-      slug: "google/gemini-flash-1.5-8b",
-      info: legacyModel,
-   },
-   {
-      slug: "google/gemini-2.5-pro-preview",
-      info: previewModel,
-   },
-   {
-      slug: "google/gemini-2.5-flash-lite-preview-06-17",
-      info: previewModel,
-   },
-   {
-      slug: "google/gemini-2.5-pro-preview-05-06",
-      info: previewModel,
-   },
-   {
-      slug: "google/gemini-2.5-pro",
-      url:  "https://gemini.google.com",
-      ok:   true,
+      info: "replaced by gemini-2.5-flash-lite",
    },
    {
       slug: "google/gemini-2.5-flash",
@@ -162,6 +134,35 @@ var all_models = models{
       slug: "google/gemini-2.5-flash-lite",
       url:  "https://aistudio.google.com/prompts/new_chat?model=gemini-2.5-flash-lite",
       ok:   true,
+   },
+   {
+      slug: "google/gemini-2.5-flash-lite-preview-06-17",
+      info: "preview",
+   },
+   {
+      slug: "google/gemini-2.5-pro",
+      url:  "https://gemini.google.com",
+      ok:   true,
+   },
+   {
+      slug: "google/gemini-2.5-pro-preview",
+      info: "preview",
+   },
+   {
+      slug: "google/gemini-2.5-pro-preview-05-06",
+      info: "preview",
+   },
+   {
+      slug: "google/gemini-flash-1.5",
+      info: "replaced by gemini-2.5-flash",
+   },
+   {
+      slug: "google/gemini-flash-1.5-8b",
+      info: "replaced by gemini-2.5-flash",
+   },
+   {
+      slug: "google/gemini-pro-1.5",
+      info: "replaced by gemini-2.5-pro",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
@@ -203,10 +204,6 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "mistralai/mistral-medium-3.1",
-      info: legacyModel,
-   },
-   {
       slug: "mistralai/codestral-2508",
       url:  "https://console.mistral.ai/build/playground",
       ok:   true,
@@ -214,28 +211,37 @@ var all_models = models{
    {
       slug: "mistralai/devstral-medium",
       url:  "https://console.mistral.ai/build/playground",
+      info: "devstral-medium-2507",
+      ok:   true,
+   },
+   {
+      slug: "mistralai/devstral-small",
+      url:  "https://console.mistral.ai/build/playground",
+      info: "devstral-small-2507",
       ok:   true,
    },
    {
       slug: "mistralai/devstral-small-2505",
-      url:  "https://console.mistral.ai/build/playground",
-      ok:   true,
+      info: "replaced by devstral-small-2507",
    },
    {
       slug: "mistralai/mistral-medium-3",
-      info: legacyModel,
+      info: "replaced by mistral-medium-2508",
    },
    {
-      slug: "mistralai/devstral-small",
-      info: legacyModel,
+      slug: "mistralai/mistral-medium-3.1",
+      url:  "https://console.mistral.ai/build/playground",
+      info: "mistral-medium-2508",
+      ok:   true,
    },
    {
       slug: "mistralai/mistral-small-3.1-24b-instruct",
-      info: legacyModel,
+      info: "replaced by mistral-small-2506",
    },
    {
       slug: "mistralai/mistral-small-3.2-24b-instruct",
       url:  "https://deepinfra.com/mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+      info: "mistral-small-2506",
       ok:   true,
    },
    //////////////////////////////////////////////////////////////////////////////
@@ -272,70 +278,6 @@ var all_models = models{
    },
    //////////////////////////////////////////////////////////////////////////////
    {
-      slug: "openai/gpt-4.1",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4.1-mini",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4.1-nano",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-2024-05-13",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-2024-08-06",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-2024-11-20",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-audio-preview",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-mini",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-mini-2024-07-18",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-mini-search-preview",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/gpt-4o-search-preview",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/o3",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/o4-mini",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/o4-mini-high",
-      info: legacyModel,
-   },
-   {
-      slug: "openai/codex-mini",
-      info: legacyModel,
-   },
-   {
       slug: "openai/gpt-oss-120b",
       url:  "https://gpt-oss.com",
       ok:   true,
@@ -351,9 +293,12 @@ var all_models = models{
       ok:   true,
    },
    {
-      slug: "openai/gpt-5-mini",
-      url:  "https://platform.openai.com/docs/models/gpt-5-mini",
-      ok:   true,
+      slug: "openai/gpt-4.1",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4.1-mini",
+      info: "replaced by gpt-5-mini",
    },
    {
       slug: "openai/gpt-5-nano",
@@ -361,10 +306,75 @@ var all_models = models{
       ok:   true,
    },
    {
+      slug: "openai/gpt-4.1-nano",
+      info: "replaced by gpt-5-nano",
+   },
+   {
+      slug: "openai/gpt-4o",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4o-2024-05-13",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4o-2024-08-06",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4o-2024-11-20",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4o-audio-preview",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/gpt-4o-mini",
+      info: "replaced by gpt-5-mini",
+   },
+   {
+      slug: "openai/gpt-4o-mini-2024-07-18",
+      info: "replaced by gpt-5-mini",
+   },
+   {
+      slug: "openai/gpt-4o-mini-search-preview",
+      info: "replaced by gpt-5-mini",
+   },
+   {
       slug: "openai/gpt-5",
       url:  "https://platform.openai.com/docs/models/gpt-5",
       ok:   true,
    },
+   {
+      slug: "openai/gpt-4o-search-preview",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/o3",
+      info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/o4-mini",
+      info: "replaced by gpt-5-mini",
+   },
+   {
+      slug: "openai/o4-mini-high",
+      info: "replaced by gpt-5-mini",
+   },
+   {
+      slug: "openai/gpt-5-mini",
+      url:  "https://platform.openai.com/docs/models/gpt-5-mini",
+      ok:   true,
+   },
+   {
+      slug: "openai/codex-mini",
+      url:  "https://platform.openai.com/docs/models/codex-mini-latest",
+      info: `codex-mini-latest is a fine-tuned version of o4-mini specifically
+      for use in Codex CLI. For direct use in the API, we recommend starting with
+      gpt-4.1`,
+   },
+   //////////////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////
    {
       slug: "perplexity/r1-1776",
@@ -444,7 +454,7 @@ var all_models = models{
    },
    {
       slug: "x-ai/grok-3-beta",
-      info: previewModel,
+      info: "beta",
    },
    {
       slug: "x-ai/grok-3-mini",
@@ -453,7 +463,7 @@ var all_models = models{
    },
    {
       slug: "x-ai/grok-3-mini-beta",
-      info: previewModel,
+      info: "beta",
    },
    {
       slug: "x-ai/grok-4",
