@@ -31,10 +31,10 @@ type metadata struct {
    Endpoint      *struct { // DELETE
       ModelVariantSlug string `json:"model_variant_slug"`
    }
-   ShortName string `json:"short_name"`
-   Slug      string
-   UpdatedAt time.Time `json:"updated_at"`
-   WarningMessage string `json:"warning_message"`
+   ShortName      string `json:"short_name"`
+   Slug           string
+   UpdatedAt      time.Time `json:"updated_at"`
+   WarningMessage string    `json:"warning_message"`
 }
 
 type byte_slice[T any] []byte

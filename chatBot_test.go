@@ -3,6 +3,8 @@ package chatBot
 import (
    "bytes"
    "encoding/json"
+   "fmt"
+   "log"
    "os"
    "slices"
    "testing"
@@ -24,7 +26,12 @@ func TestOne(t *testing.T) {
          t.Fatal(one_metadata, " missing from all_models")
       }
    }
+   var count int
    for _, one_model := range all_models {
+      if one_model.err == nil {
+         fmt.Print(one_model, "\n\n")
+         count++
+      }
       if !all_metadatas.contains(one_model) {
          if one_model.err != nil {
             t.Fatal(one_model.slug, " extra in all_models")
@@ -33,6 +40,7 @@ func TestOne(t *testing.T) {
          }
       }
    }
+   log.Println("count", count)
 }
 
 func TestZero(t *testing.T) {
