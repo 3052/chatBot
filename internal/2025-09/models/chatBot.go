@@ -5,8 +5,23 @@ import (
    "fmt"
    "io"
    "net/http"
+   "slices"
    "time"
 )
+
+func (a *model) tokens(front *frontend) int64 {
+   i := slices.IndexFunc(front.Models, func(b *metadata) bool {
+      return b.Slug == a.slug
+   })
+   return front.Analytics[front.Models[i].Permaslug].TotalPromptTokens
+}
+
+type frontend struct {
+   Analytics map[string]struct {
+      TotalPromptTokens int64 `json:"total_prompt_tokens"`
+   }
+   Models []*metadata
+}
 
 func delete_metadata(m *metadata) bool {
    if m.ContextLength < 128000 {
@@ -26,10 +41,6 @@ func delete_metadata(m *metadata) bool {
       return true
    }
    return m.WarningMessage != ""
-}
-
-func (m *metadata) tokens(front *frontend) int64 {
-   return front.Analytics[m.Permaslug].TotalPromptTokens
 }
 
 func (b *model) contains(a []*metadata) bool {
@@ -75,15 +86,6 @@ func (m *model) String() string {
    return string(b)
 }
 
-type model struct {
-   slug string
-   url  string
-   info string
-   ok   bool
-}
-
-const mayTrain = "paid endpoints that may train on inputs"
-
 type byte_slice[T any] []byte
 
 func get_frontend() (byte_slice[frontend], error) {
@@ -107,11 +109,4 @@ func (f *frontend) unmarshal(data byte_slice[frontend]) error {
    }
    *f = value.Data
    return nil
-}
-
-type frontend struct {
-   Analytics map[string]struct {
-      TotalPromptTokens int64 `json:"total_prompt_tokens"`
-   }
-   Models []*metadata
 }

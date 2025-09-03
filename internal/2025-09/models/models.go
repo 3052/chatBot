@@ -1,5 +1,14 @@
 package models
 
+const mayTrain = "paid endpoints that may train on inputs"
+
+type model struct {
+   slug string
+   url  string
+   info string
+   ok   bool
+}
+
 var all_models = []*model{
    {
       slug: "ai21/jamba-large-1.7",

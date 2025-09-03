@@ -27,7 +27,6 @@ func TestOne(t *testing.T) {
    front.Models = slices.DeleteFunc(front.Models, delete_metadata)
    log.Println("len(front.Models)", len(front.Models))
    for _, one_metadata := range front.Models {
-      // log.Println("tokens", one_metadata.tokens(&front))
       if !one_metadata.contains(all_models) {
          t.Fatal(one_metadata.Slug, " missing from all_models")
       }
@@ -35,6 +34,9 @@ func TestOne(t *testing.T) {
    for _, one_model := range all_models {
       if !one_model.contains(front.Models) {
          t.Fatal(one_model.slug, " extra in all_models")
+      }
+      if one_model.ok {
+         fmt.Printf("%19v %v\n", one_model.tokens(&front), one_model.slug)
       }
    }
 }
