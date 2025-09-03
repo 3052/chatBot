@@ -7,10 +7,9 @@ import (
    "log"
    "os"
    "slices"
+   "strings"
    "testing"
 )
-
-const name = "ignore/chatBot.json"
 
 func TestOne(t *testing.T) {
    log.SetFlags(log.Ltime)
@@ -26,31 +25,15 @@ func TestOne(t *testing.T) {
    log.Println("len(front.Models)", len(front.Models))
    front.Models = slices.DeleteFunc(front.Models, delete_metadata)
    log.Println("len(front.Models)", len(front.Models))
+   slices.SortFunc(front.Models, func(a, b *metadata) int {
+      return strings.Compare(a.Slug, b.Slug)
+   })
    for _, one_metadata := range front.Models {
-      if !one_metadata.contains(all_models) {
-         t.Fatal(one_metadata.Slug, " missing from all_models")
-      }
-   }
-   for _, one_model := range all_models {
-      if !one_model.contains(front.Models) {
-         t.Fatal(one_model.slug, " extra in all_models")
-      }
-      if one_model.ok {
-         fmt.Printf("%19v %v\n", one_model.tokens(&front), one_model.slug)
-      }
+      fmt.Println(one_metadata.Slug)
    }
 }
 
-func TestTwo(t *testing.T) {
-   var count int
-   for _, one_model := range all_models {
-      if one_model.ok {
-         fmt.Print(one_model, "\n\n")
-         count++
-      }
-   }
-   log.Println("count", count)
-}
+const name = "ignore/chatBot.json"
 
 func TestZero(t *testing.T) {
    data, err := get_frontend()

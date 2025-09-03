@@ -7,13 +7,6 @@ import (
    "time"
 )
 
-type frontend struct {
-   Analytics map[string]struct {
-      TotalPromptTokens int64 `json:"total_prompt_tokens"`
-   }
-   Models []*metadata
-}
-
 func delete_metadata(m *metadata) bool {
    if m.ContextLength < 128000 {
       return true
@@ -32,6 +25,25 @@ func delete_metadata(m *metadata) bool {
       return true
    }
    return m.WarningMessage != ""
+}
+
+type metadata struct {
+   Author        string
+   ContextLength int       `json:"context_length"`
+   Endpoint      *struct { // DELETE
+      ModelVariantSlug string `json:"model_variant_slug"`
+   }
+   ShortName      string `json:"short_name"`
+   Slug           string
+   UpdatedAt      time.Time `json:"updated_at"`
+   WarningMessage string    `json:"warning_message"`
+}
+
+type frontend struct {
+   Analytics map[string]struct {
+      TotalPromptTokens int64 `json:"total_prompt_tokens"`
+   }
+   Models []*metadata
 }
 
 type byte_slice[T any] []byte
@@ -57,21 +69,4 @@ func (f *frontend) unmarshal(data byte_slice[frontend]) error {
    }
    *f = value.Data
    return nil
-}
-
-type metadata struct {
-   Author        string
-   ContextLength int       `json:"context_length"`
-   Endpoint      *struct { // DELETE
-      ModelVariantSlug string `json:"model_variant_slug"`
-   }
-   Permaslug      string
-   ShortName      string `json:"short_name"`
-   Slug           string
-   UpdatedAt      time.Time `json:"updated_at"`
-   WarningMessage string    `json:"warning_message"`
-}
-
-func (m *metadata) tokens(front *frontend) int64 {
-   return front.Analytics[m.Permaslug].TotalPromptTokens
 }
