@@ -1,14 +1,6 @@
 package models
 
-import (
-   "encoding/json"
-   "fmt"
-   "io"
-   "net/http"
-   "time"
-)
-
-var all_models = models{
+var all_models = []*model{
    {
       slug: "ai21/jamba-large-1.7",
       url:  "https://studio.ai21.com",
@@ -22,7 +14,7 @@ var all_models = models{
    //////////////////////////////////////////////////////////////////////////////
    {
       slug: "anthropic/claude-3.5-haiku-20241022",
-      url:  "https://console.anthropic.com/workbench",
+      url:  "https://claude.ai",
       info: "latest",
       ok:   true,
    },
@@ -75,6 +67,11 @@ var all_models = models{
       slug: "bytedance/ui-tars-1.5-7b",
       url:  "https://openrouter.ai/chat?models=bytedance/ui-tars-1.5-7b",
       ok:   true,
+   },
+   //////////////////////////////////////////////////////////////////////////////
+   {
+      slug: "deepcogito/cogito-v2-preview-deepseek-671b",
+      info: "preview",
    },
    //////////////////////////////////////////////////////////////////////////////
    {
@@ -147,10 +144,6 @@ var all_models = models{
    },
    {
       slug: "google/gemini-flash-1.5",
-      info: "replaced by gemini-2.5-flash",
-   },
-   {
-      slug: "google/gemini-flash-1.5-8b",
       info: "replaced by gemini-2.5-flash",
    },
    {
@@ -272,10 +265,7 @@ var all_models = models{
    //////////////////////////////////////////////////////////////////////////////
    {
       slug: "openai/codex-mini",
-      url:  "https://platform.openai.com/docs/models/codex-mini-latest",
-      info: `codex-mini-latest is a fine-tuned version of o4-mini specifically
-      for use in Codex CLI. For direct use in the API, we recommend starting with
-      gpt-4.1`,
+      info: "replaced by openai/gpt-4.1",
    },
    {
       slug: "openai/gpt-4.1",
@@ -356,8 +346,20 @@ var all_models = models{
       ok:   true,
    },
    {
+      slug: "openai/o1",
+      info: "replaced by openai/o3",
+   },
+   {
+      slug: "openai/o1-pro",
+      info: "replaced by openai/o3",
+   },
+   {
       slug: "openai/o3",
       info: "replaced by gpt-5",
+   },
+   {
+      slug: "openai/o3-mini",
+      info: "replaced by gpt-5-mini",
    },
    {
       slug: "openai/o4-mini",
@@ -484,105 +486,3 @@ var all_models = models{
       ok:   true,
    },
 }
-func delete_metadata(m *metadata) bool {
-   if m.ContextLength < 128000 {
-      return true
-   }
-   if m.Endpoint == nil {
-      return true
-   }
-   if m.Endpoint.ModelVariantSlug != m.Slug {
-      return true
-   }
-   const day = 24 * time.Hour
-   const month = 30 * day
-   // 6 month is 150
-   const updated_at = 5 * month
-   if time.Since(m.UpdatedAt) >= updated_at {
-      return true
-   }
-   return m.WarningMessage != ""
-}
-
-type byte_slice[T any] []byte
-
-type metadata struct {
-   Author        string
-   ContextLength int       `json:"context_length"`
-   Endpoint      *struct { // DELETE
-      ModelVariantSlug string `json:"model_variant_slug"`
-   }
-   ShortName      string `json:"short_name"`
-   Slug           string
-   UpdatedAt      time.Time `json:"updated_at"`
-   WarningMessage string    `json:"warning_message"`
-}
-
-func (m *metadatas) unmarshal(data byte_slice[metadatas]) error {
-   var value struct {
-      Data struct {
-         Models []*metadata
-      }
-   }
-   err := json.Unmarshal(data, &value)
-   if err != nil {
-      return err
-   }
-   *m = value.Data.Models
-   return nil
-}
-
-type metadatas []*metadata
-
-func (a metadatas) contains(b *model) bool {
-   for _, a1 := range a {
-      if a1.Slug == b.slug {
-         return true
-      }
-   }
-   return false
-}
-
-func (m *model) String() string {
-   b := fmt.Appendln(nil, "slug =", m.slug)
-   b = fmt.Append(b, "url = ", m.url)
-   if m.info != "" {
-      b = fmt.Append(b, "\ninfo = ", m.info)
-   }
-   if m.ok {
-      b = append(b, "\nok = true"...)
-   }
-   return string(b)
-}
-
-func (a models) contains(b *metadata) bool {
-   for _, a1 := range a {
-      if a1.slug == b.Slug {
-         return true
-      }
-   }
-   return false
-}
-
-///
-
-func get_metadatas() (byte_slice[metadatas], error) {
-   req, _ := http.NewRequest("", "https://openrouter.ai", nil)
-   req.URL.Path = "/api/frontend/models/find"
-   resp, err := http.DefaultClient.Do(req)
-   if err != nil {
-      return nil, err
-   }
-   defer resp.Body.Close()
-   return io.ReadAll(resp.Body)
-}
-type model struct {
-   slug string
-   url  string
-   info string
-   ok   bool
-}
-
-type models []*model
-
-const mayTrain = "paid endpoints that may train on inputs"
