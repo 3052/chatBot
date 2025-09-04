@@ -27,6 +27,13 @@ func delete_metadata(m *metadata) bool {
    return m.WarningMessage != ""
 }
 
+type frontend struct {
+   Analytics map[string]struct {
+      TotalPromptTokens int64 `json:"total_prompt_tokens"`
+   }
+   Models []*metadata
+}
+
 type metadata struct {
    Author        string
    ContextLength int       `json:"context_length"`
@@ -39,12 +46,7 @@ type metadata struct {
    WarningMessage string    `json:"warning_message"`
 }
 
-type frontend struct {
-   Analytics map[string]struct {
-      TotalPromptTokens int64 `json:"total_prompt_tokens"`
-   }
-   Models []*metadata
-}
+///
 
 type byte_slice[T any] []byte
 
