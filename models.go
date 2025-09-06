@@ -46,8 +46,6 @@ type metadata struct {
    WarningMessage string    `json:"warning_message"`
 }
 
-///
-
 type byte_slice[T any] []byte
 
 func get_frontend() (byte_slice[frontend], error) {
