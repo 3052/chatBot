@@ -4,7 +4,6 @@ import (
    "chatBot/gemini"
    "flag"
    "fmt"
-   "os"
    "os/exec"
 )
 
@@ -26,16 +25,8 @@ func completion(text string) error {
    if err != nil {
       return err
    }
-   file, err := os.Create("gemini.txt")
-   if err != nil {
-      return err
-   }
-   defer file.Close()
    for _, completion := range completions {
-      _, err = fmt.Fprintln(file, completion)
-      if err != nil {
-         return err
-      }
+      fmt.Println(completion)
    }
    return nil
 }
