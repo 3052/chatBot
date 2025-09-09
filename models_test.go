@@ -1,15 +1,12 @@
 package models
 
 import (
-   "bytes"
    "encoding/json"
    "log"
    "os"
    "slices"
    "testing"
 )
-
-const name = "ignore/chatBot.json"
 
 func TestRequestRead(t *testing.T) {
    log.SetFlags(log.Ltime)
@@ -18,47 +15,43 @@ func TestRequestRead(t *testing.T) {
    if err != nil {
       t.Fatal(err)
    }
-   var modelsA models
-   err = modelsA.unmarshal(data)
+   var modelsA []*model
+   err = json.Unmarshal(data, &modelsA)
    if err != nil {
       t.Fatal(err)
    }
    modelsA = slices.DeleteFunc(modelsA, delete_model)
    // B
-   data, err = find()
-   if err != nil {
-      t.Fatal(err)
-   }
-   var modelsB models
-   err = modelsB.unmarshal(data)
+   modelsB, err := find()
    if err != nil {
       t.Fatal(err)
    }
    modelsB = slices.DeleteFunc(modelsB, delete_model)
    for _, modelA := range modelsA {
-      if !modelsB.contains(modelA) {
+      if !contains(modelsB, modelA) {
          log.Println("removed", modelA)
       }
    }
    for _, modelB := range modelsB {
-      if !modelsA.contains(modelB) {
+      if !contains(modelsA, modelB) {
          log.Println("added", modelB)
       }
    }
 }
 
 func TestRequestWrite(t *testing.T) {
-   data, err := find()
+   models, err := find()
    if err != nil {
       t.Fatal(err)
    }
-   var data1 bytes.Buffer
-   err = json.Indent(&data1, data, "", " ")
+   data, err := json.MarshalIndent(models, "", " ")
    if err != nil {
       t.Fatal(err)
    }
-   err = os.WriteFile(name, data1.Bytes(), os.ModePerm)
+   err = os.WriteFile(name, data, os.ModePerm)
    if err != nil {
       t.Fatal(err)
    }
 }
+
+const name = "chatBot.json"
