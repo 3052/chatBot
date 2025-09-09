@@ -1,14 +1,35 @@
-package models
+package chatBot
 
 import (
    "encoding/json"
+   "fmt"
    "log"
    "os"
    "slices"
+   "strings"
    "testing"
 )
 
-func TestRequestRead(t *testing.T) {
+func TestSlug(t *testing.T) {
+   data, err := os.ReadFile(name)
+   if err != nil {
+      t.Fatal(err)
+   }
+   var models []*model
+   err = json.Unmarshal(data, &models)
+   if err != nil {
+      t.Fatal(err)
+   }
+   models = slices.DeleteFunc(models, delete_model)
+   slices.SortFunc(models, func(a, b *model) int {
+      return strings.Compare(a.Slug, b.Slug)
+   })
+   for _, modelVar := range models {
+      fmt.Println(modelVar.Slug)
+   }
+}
+
+func TestContains(t *testing.T) {
    log.SetFlags(log.Ltime)
    // A
    data, err := os.ReadFile(name)
@@ -39,7 +60,7 @@ func TestRequestRead(t *testing.T) {
    }
 }
 
-func TestRequestWrite(t *testing.T) {
+func TestWrite(t *testing.T) {
    models, err := find()
    if err != nil {
       t.Fatal(err)

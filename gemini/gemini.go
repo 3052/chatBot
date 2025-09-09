@@ -4,23 +4,42 @@ import (
    "bytes"
    "encoding/json"
    "net/http"
+   "strings"
 )
 
-type completion struct {
+func (c Completion) String() string {
+   var (
+      data strings.Builder
+      line bool
+   )
+   for _, candidate := range c.Candidates {
+      for _, part := range candidate.Content.Parts {
+         if line {
+            data.WriteByte('\n')
+         } else {
+            line = true
+         }
+         data.WriteString(part.Text)
+      }
+   }
+   return data.String()
+}
+
+type Completion struct {
    Candidates []struct {
-      Content content
+      Content Content
    }
 }
 
-type content struct {
-   Parts []part `json:"parts"`
-}
-
-type part struct {
+type Part struct {
    Text string `json:"text"`
 }
 
-func (p prompt) generate(key string) ([]completion, error) {
+type Content struct {
+   Parts []Part `json:"parts"`
+}
+
+func (p Prompt) Generate(key string) ([]Completion, error) {
    data, err := json.Marshal(p)
    if err != nil {
       return nil, err
@@ -38,7 +57,7 @@ func (p prompt) generate(key string) ([]completion, error) {
       return nil, err
    }
    defer resp.Body.Close()
-   var completions []completion
+   var completions []Completion
    err = json.NewDecoder(resp.Body).Decode(&completions)
    if err != nil {
       return nil, err
@@ -46,6 +65,6 @@ func (p prompt) generate(key string) ([]completion, error) {
    return completions, nil
 }
 
-type prompt struct {
-   Contents []content `json:"contents"`
+type Prompt struct {
+   Contents []Content `json:"contents"`
 }

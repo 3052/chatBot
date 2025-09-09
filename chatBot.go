@@ -1,4 +1,4 @@
-package models
+package chatBot
 
 import (
    "encoding/json"
