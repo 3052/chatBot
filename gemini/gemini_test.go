@@ -1,11 +1,9 @@
 package gemini
 
 import (
-   "bytes"
-   "encoding/json"
    "fmt"
-   "net/http"
    "os/exec"
+   "testing"
 )
 
 func Test(t *testing.T) {

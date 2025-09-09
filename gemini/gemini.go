@@ -3,9 +3,7 @@ package gemini
 import (
    "bytes"
    "encoding/json"
-   "fmt"
    "net/http"
-   "os/exec"
 )
 
 type completion struct {
