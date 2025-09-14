@@ -50,12 +50,12 @@ func TestContains(t *testing.T) {
    modelsB = slices.DeleteFunc(modelsB, delete_model)
    for _, modelA := range modelsA {
       if !contains(modelsB, modelA) {
-         log.Println("removed", modelA)
+         log.Println("removed", modelA.Slug)
       }
    }
    for _, modelB := range modelsB {
       if !contains(modelsA, modelB) {
-         log.Println("added", modelB)
+         log.Println("added", modelB.Slug)
       }
    }
 }

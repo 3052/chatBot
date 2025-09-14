@@ -14,7 +14,6 @@ type model struct {
    ShortName      string `json:"short_name"`
    Slug           string `json:"slug"`
    UpdatedAt      time.Time `json:"updated_at"`
-   
    WarningMessage string    `json:"warning_message,omitempty"`
 }
 

@@ -15,6 +15,7 @@ google/gemini-2.5-flash
 google/gemini-2.5-pro
 inception/mercury
 inception/mercury-coder
+meituan/longcat-flash-chat
 meta-llama/llama-4-maverick
 meta-llama/llama-4-scout
 microsoft/mai-ds-r1

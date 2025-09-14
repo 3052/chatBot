@@ -1,12 +1,66 @@
 [
  {
+  "context_length": 262144,
+  "endpoint": {
+   "model_variant_slug": "qwen/qwen3-next-80b-a3b-thinking"
+  },
+  "short_name": "Qwen3 Next 80B A3B Thinking",
+  "slug": "qwen/qwen3-next-80b-a3b-thinking",
+  "updated_at": "2025-09-11T18:32:44.4274Z"
+ },
+ {
+  "context_length": 262144,
+  "endpoint": {
+   "model_variant_slug": "qwen/qwen3-next-80b-a3b-instruct"
+  },
+  "short_name": "Qwen3 Next 80B A3B Instruct",
+  "slug": "qwen/qwen3-next-80b-a3b-instruct",
+  "updated_at": "2025-09-11T18:09:18.713649Z"
+ },
+ {
+  "context_length": 131072,
+  "endpoint": {
+   "model_variant_slug": "meituan/longcat-flash-chat"
+  },
+  "short_name": "LongCat Flash Chat",
+  "slug": "meituan/longcat-flash-chat",
+  "updated_at": "2025-09-10T21:37:34.286628Z"
+ },
+ {
+  "context_length": 1000000,
+  "endpoint": {
+   "model_variant_slug": "qwen/qwen-plus-2025-07-28"
+  },
+  "short_name": "Qwen Plus 0728",
+  "slug": "qwen/qwen-plus-2025-07-28",
+  "updated_at": "2025-09-11T19:13:35.457672Z"
+ },
+ {
+  "context_length": 1000000,
+  "endpoint": {
+   "model_variant_slug": "qwen/qwen-plus-2025-07-28:thinking"
+  },
+  "short_name": "Qwen Plus 0728 (thinking)",
+  "slug": "qwen/qwen-plus-2025-07-28",
+  "updated_at": "2025-09-11T19:13:35.457672Z"
+ },
+ {
   "context_length": 128000,
+  "endpoint": {
+   "model_variant_slug": "nvidia/nemotron-nano-9b-v2:free"
+  },
+  "short_name": "Nemotron Nano 9B V2 (free)",
+  "slug": "nvidia/nemotron-nano-9b-v2",
+  "updated_at": "2025-09-09T18:49:07.383949Z"
+ },
+ {
+  "context_length": 131072,
   "endpoint": {
    "model_variant_slug": "nvidia/nemotron-nano-9b-v2"
   },
   "short_name": "Nemotron Nano 9B V2",
   "slug": "nvidia/nemotron-nano-9b-v2",
-  "updated_at": "2025-09-08T23:44:19.965076Z"
+  "updated_at": "2025-09-09T18:49:07.383949Z"
  },
  {
   "context_length": 2000000,
@@ -125,7 +179,7 @@
   },
   "short_name": "Gemini 2.5 Flash Image Preview",
   "slug": "google/gemini-2.5-flash-image-preview",
-  "updated_at": "2025-08-26T14:36:18.243433Z"
+  "updated_at": "2025-09-11T17:10:09.921298Z"
  },
  {
   "context_length": 64000,
@@ -1147,7 +1201,7 @@
   "updated_at": "2025-05-02T04:24:19.618314Z"
  },
  {
-  "context_length": 8192,
+  "context_length": 4096,
   "endpoint": {
    "model_variant_slug": "alfredpros/codellama-7b-instruct-solidity"
   },
@@ -1230,15 +1284,6 @@
  {
   "context_length": 131072,
   "endpoint": {
-   "model_variant_slug": "nvidia/llama-3.3-nemotron-super-49b-v1"
-  },
-  "short_name": "Llama 3.3 Nemotron Super 49B v1",
-  "slug": "nvidia/llama-3.3-nemotron-super-49b-v1",
-  "updated_at": "2025-04-08T14:53:49.407401Z"
- },
- {
-  "context_length": 131072,
-  "endpoint": {
    "model_variant_slug": "nvidia/llama-3.1-nemotron-ultra-253b-v1:free"
   },
   "short_name": "Llama 3.1 Nemotron Ultra 253B v1 (free)",
@@ -1289,6 +1334,15 @@
   "short_name": "Llama 4 Scout",
   "slug": "meta-llama/llama-4-scout",
   "updated_at": "2025-05-16T21:16:57.919461Z"
+ },
+ {
+  "context_length": 4096,
+  "endpoint": {
+   "model_variant_slug": "allenai/molmo-7b-d"
+  },
+  "short_name": "Molmo 7B D",
+  "slug": "allenai/molmo-7b-d",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 8192,
@@ -1354,6 +1408,15 @@
   "updated_at": "2025-06-20T18:10:04.436603Z"
  },
  {
+  "context_length": 4096,
+  "endpoint": {
+   "model_variant_slug": "allenai/olmo-2-0325-32b-instruct"
+  },
+  "short_name": "Olmo 2 32B Instruct",
+  "slug": "allenai/olmo-2-0325-32b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
   "context_length": 32768,
   "endpoint": {
    "model_variant_slug": "google/gemma-3-4b-it:free"
@@ -1390,7 +1453,7 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32768,
+  "context_length": 256000,
   "endpoint": {
    "model_variant_slug": "cohere/command-a"
   },
@@ -1621,7 +1684,7 @@
   },
   "short_name": "o3 Mini High",
   "slug": "openai/o3-mini-high",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
+  "updated_at": "2025-09-12T23:37:30.472717Z"
  },
  {
   "context_length": 32000,
@@ -1738,7 +1801,7 @@
   },
   "short_name": "o3 Mini",
   "slug": "openai/o3-mini",
-  "updated_at": "2025-09-02T16:51:53.345473Z"
+  "updated_at": "2025-09-12T23:29:54.738025Z"
  },
  {
   "context_length": 32768,
@@ -2038,15 +2101,6 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 8192,
-  "endpoint": {
-   "model_variant_slug": "infermatic/mn-inferor-12b"
-  },
-  "short_name": "Mistral Nemo Inferor 12B",
-  "slug": "infermatic/mn-inferor-12b",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 32768,
   "endpoint": {
    "model_variant_slug": "qwen/qwen-2.5-coder-32b-instruct:free"
@@ -2119,21 +2173,21 @@
   "updated_at": "2025-08-08T22:24:53.568294Z"
  },
  {
-  "context_length": 128000,
-  "endpoint": {
-   "model_variant_slug": "mistralai/ministral-8b"
-  },
-  "short_name": "Ministral 8B",
-  "slug": "mistralai/ministral-8b",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 32768,
   "endpoint": {
    "model_variant_slug": "mistralai/ministral-3b"
   },
   "short_name": "Ministral 3B",
   "slug": "mistralai/ministral-3b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 128000,
+  "endpoint": {
+   "model_variant_slug": "mistralai/ministral-8b"
+  },
+  "short_name": "Ministral 8B",
+  "slug": "mistralai/ministral-8b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2157,19 +2211,19 @@
  {
   "context_length": 8000,
   "endpoint": {
-   "model_variant_slug": "inflection/inflection-3-productivity"
+   "model_variant_slug": "inflection/inflection-3-pi"
   },
-  "short_name": "Inflection 3 Productivity",
-  "slug": "inflection/inflection-3-productivity",
+  "short_name": "Inflection 3 Pi",
+  "slug": "inflection/inflection-3-pi",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 8000,
   "endpoint": {
-   "model_variant_slug": "inflection/inflection-3-pi"
+   "model_variant_slug": "inflection/inflection-3-productivity"
   },
-  "short_name": "Inflection 3 Pi",
-  "slug": "inflection/inflection-3-pi",
+  "short_name": "Inflection 3 Productivity",
+  "slug": "inflection/inflection-3-productivity",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2200,6 +2254,24 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
+  "context_length": 32768,
+  "endpoint": {
+   "model_variant_slug": "meta-llama/llama-3.2-90b-vision-instruct"
+  },
+  "short_name": "Llama 3.2 90B Vision Instruct",
+  "slug": "meta-llama/llama-3.2-90b-vision-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 131072,
+  "endpoint": {
+   "model_variant_slug": "meta-llama/llama-3.2-1b-instruct"
+  },
+  "short_name": "Llama 3.2 1B Instruct",
+  "slug": "meta-llama/llama-3.2-1b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
   "context_length": 131072,
   "endpoint": {
    "model_variant_slug": "meta-llama/llama-3.2-3b-instruct:free"
@@ -2215,24 +2287,6 @@
   },
   "short_name": "Llama 3.2 3B Instruct",
   "slug": "meta-llama/llama-3.2-3b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 131072,
-  "endpoint": {
-   "model_variant_slug": "meta-llama/llama-3.2-1b-instruct"
-  },
-  "short_name": "Llama 3.2 1B Instruct",
-  "slug": "meta-llama/llama-3.2-1b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 32768,
-  "endpoint": {
-   "model_variant_slug": "meta-llama/llama-3.2-90b-vision-instruct"
-  },
-  "short_name": "Llama 3.2 90B Vision Instruct",
-  "slug": "meta-llama/llama-3.2-90b-vision-instruct",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2319,19 +2373,19 @@
  {
   "context_length": 32768,
   "endpoint": {
-   "model_variant_slug": "qwen/qwen-2.5-vl-7b-instruct"
+   "model_variant_slug": "sao10k/l3.1-euryale-70b"
   },
-  "short_name": "Qwen2.5-VL 7B Instruct",
-  "slug": "qwen/qwen-2.5-vl-7b-instruct",
+  "short_name": "Llama 3.1 Euryale 70B v2.2",
+  "slug": "sao10k/l3.1-euryale-70b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 32768,
   "endpoint": {
-   "model_variant_slug": "sao10k/l3.1-euryale-70b"
+   "model_variant_slug": "qwen/qwen-2.5-vl-7b-instruct"
   },
-  "short_name": "Llama 3.1 Euryale 70B v2.2",
-  "slug": "sao10k/l3.1-euryale-70b",
+  "short_name": "Qwen2.5-VL 7B Instruct",
+  "slug": "qwen/qwen-2.5-vl-7b-instruct",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2454,20 +2508,20 @@
  {
   "context_length": 128000,
   "endpoint": {
-   "model_variant_slug": "openai/gpt-4o-mini"
-  },
-  "short_name": "GPT-4o-mini",
-  "slug": "openai/gpt-4o-mini",
-  "updated_at": "2025-04-23T22:07:10.809212Z"
- },
- {
-  "context_length": 128000,
-  "endpoint": {
    "model_variant_slug": "openai/gpt-4o-mini-2024-07-18"
   },
   "short_name": "GPT-4o-mini (2024-07-18)",
   "slug": "openai/gpt-4o-mini-2024-07-18",
   "updated_at": "2025-04-23T22:07:14.802248Z"
+ },
+ {
+  "context_length": 128000,
+  "endpoint": {
+   "model_variant_slug": "openai/gpt-4o-mini"
+  },
+  "short_name": "GPT-4o-mini",
+  "slug": "openai/gpt-4o-mini",
+  "updated_at": "2025-04-23T22:07:10.809212Z"
  },
  {
   "context_length": 8192,
@@ -2524,24 +2578,6 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32768,
-  "endpoint": {
-   "model_variant_slug": "mistralai/mistral-7b-instruct:free"
-  },
-  "short_name": "Mistral 7B Instruct (free)",
-  "slug": "mistralai/mistral-7b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 32768,
-  "endpoint": {
-   "model_variant_slug": "mistralai/mistral-7b-instruct"
-  },
-  "short_name": "Mistral 7B Instruct",
-  "slug": "mistralai/mistral-7b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 131072,
   "endpoint": {
    "model_variant_slug": "nousresearch/hermes-2-pro-llama-3-8b"
@@ -2558,6 +2594,24 @@
   "short_name": "Mistral 7B Instruct v0.3",
   "slug": "mistralai/mistral-7b-instruct-v0.3",
   "updated_at": "2025-04-28T20:21:03.247395Z"
+ },
+ {
+  "context_length": 32768,
+  "endpoint": {
+   "model_variant_slug": "mistralai/mistral-7b-instruct:free"
+  },
+  "short_name": "Mistral 7B Instruct (free)",
+  "slug": "mistralai/mistral-7b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 32768,
+  "endpoint": {
+   "model_variant_slug": "mistralai/mistral-7b-instruct"
+  },
+  "short_name": "Mistral 7B Instruct",
+  "slug": "mistralai/mistral-7b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 128000,
@@ -2598,6 +2652,15 @@
  {
   "context_length": 128000,
   "endpoint": {
+   "model_variant_slug": "openai/gpt-4o-2024-05-13"
+  },
+  "short_name": "GPT-4o (2024-05-13)",
+  "slug": "openai/gpt-4o-2024-05-13",
+  "updated_at": "2025-04-23T22:07:30.08308Z"
+ },
+ {
+  "context_length": 128000,
+  "endpoint": {
    "model_variant_slug": "openai/gpt-4o"
   },
   "short_name": "GPT-4o",
@@ -2623,13 +2686,13 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 128000,
+  "context_length": 8192,
   "endpoint": {
-   "model_variant_slug": "openai/gpt-4o-2024-05-13"
+   "model_variant_slug": "meta-llama/llama-3-70b-instruct"
   },
-  "short_name": "GPT-4o (2024-05-13)",
-  "slug": "openai/gpt-4o-2024-05-13",
-  "updated_at": "2025-04-23T22:07:30.08308Z"
+  "short_name": "Llama 3 70B Instruct",
+  "slug": "meta-llama/llama-3-70b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 8192,
@@ -2638,15 +2701,6 @@
   },
   "short_name": "Llama 3 8B Instruct",
   "slug": "meta-llama/llama-3-8b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 8192,
-  "endpoint": {
-   "model_variant_slug": "meta-llama/llama-3-70b-instruct"
-  },
-  "short_name": "Llama 3 70B Instruct",
-  "slug": "meta-llama/llama-3-70b-instruct",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2767,15 +2821,6 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 4095,
-  "endpoint": {
-   "model_variant_slug": "openai/gpt-3.5-turbo-0613"
-  },
-  "short_name": "GPT-3.5 Turbo (older v0613)",
-  "slug": "openai/gpt-3.5-turbo-0613",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 128000,
   "endpoint": {
    "model_variant_slug": "openai/gpt-4-turbo-preview"
@@ -2785,12 +2830,12 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32768,
+  "context_length": 4095,
   "endpoint": {
-   "model_variant_slug": "mistralai/mistral-small"
+   "model_variant_slug": "openai/gpt-3.5-turbo-0613"
   },
-  "short_name": "Mistral Small",
-  "slug": "mistralai/mistral-small",
+  "short_name": "GPT-3.5 Turbo (older v0613)",
+  "slug": "openai/gpt-3.5-turbo-0613",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -2802,6 +2847,15 @@
   "slug": "mistralai/mistral-tiny",
   "updated_at": "2025-03-31T15:57:54.980898Z",
   "warning_message": "This model is deprecated and slated for retirement. Please see [Ministral 8B](/mistral/ministral-8b) for the Mistral suggested upgrade."
+ },
+ {
+  "context_length": 32768,
+  "endpoint": {
+   "model_variant_slug": "mistralai/mistral-small"
+  },
+  "short_name": "Mistral Small",
+  "slug": "mistralai/mistral-small",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 32768,
@@ -2858,15 +2912,6 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 4096,
-  "endpoint": {
-   "model_variant_slug": "pygmalionai/mythalion-13b"
-  },
-  "short_name": "Mythalion 13B",
-  "slug": "pygmalionai/mythalion-13b",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 16385,
   "endpoint": {
    "model_variant_slug": "openai/gpt-3.5-turbo-16k"
@@ -2914,19 +2959,19 @@
  {
   "context_length": 8191,
   "endpoint": {
-   "model_variant_slug": "openai/gpt-4"
+   "model_variant_slug": "openai/gpt-4-0314"
   },
-  "short_name": "GPT-4",
-  "slug": "openai/gpt-4",
+  "short_name": "GPT-4 (older v0314)",
+  "slug": "openai/gpt-4-0314",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 8191,
   "endpoint": {
-   "model_variant_slug": "openai/gpt-4-0314"
+   "model_variant_slug": "openai/gpt-4"
   },
-  "short_name": "GPT-4 (older v0314)",
-  "slug": "openai/gpt-4-0314",
+  "short_name": "GPT-4",
+  "slug": "openai/gpt-4",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3110,6 +3155,13 @@
   "updated_at": "2025-04-08T14:53:32.88218Z"
  },
  {
+  "context_length": 131072,
+  "endpoint": null,
+  "short_name": "Llama 3.3 Nemotron Super 49B v1",
+  "slug": "nvidia/llama-3.3-nemotron-super-49b-v1",
+  "updated_at": "2025-04-08T14:53:49.407401Z"
+ },
+ {
   "context_length": 16384,
   "endpoint": null,
   "short_name": "Llama 3.1 Swallow 8B Instruct V0.3",
@@ -3150,13 +3202,6 @@
   "short_name": "Typhoon2 70B Instruct",
   "slug": "scb10x/llama3.1-typhoon2-70b-instruct",
   "updated_at": "2025-05-16T16:33:10.628048Z"
- },
- {
-  "context_length": 4096,
-  "endpoint": null,
-  "short_name": "Molmo 7B D",
-  "slug": "allenai/molmo-7b-d",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 32768,
@@ -3200,13 +3245,6 @@
   "short_name": "L3.3 Electra R1 70B",
   "slug": "steelskull/l3.3-electra-r1-70b",
   "updated_at": "2025-05-02T21:14:16.355933Z"
- },
- {
-  "context_length": 128000,
-  "endpoint": null,
-  "short_name": "Olmo 2 32B Instruct",
-  "slug": "allenai/olmo-2-0325-32b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 32000,
@@ -3330,6 +3368,13 @@
  {
   "context_length": 32000,
   "endpoint": null,
+  "short_name": "Mistral Nemo Inferor 12B",
+  "slug": "infermatic/mn-inferor-12b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 32000,
+  "endpoint": null,
   "short_name": "EVA Qwen2.5 32B",
   "slug": "eva-unit-01/eva-qwen-2.5-32b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
@@ -3351,13 +3396,6 @@
  {
   "context_length": 32768,
   "endpoint": null,
-  "short_name": "Grok 2 mini",
-  "slug": "x-ai/grok-2-mini",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 32768,
-  "endpoint": null,
   "short_name": "Grok 2",
   "slug": "x-ai/grok-2",
   "updated_at": "2025-03-28T03:20:30.853469Z"
@@ -3365,8 +3403,8 @@
  {
   "context_length": 32768,
   "endpoint": null,
-  "short_name": "EVA Qwen2.5 14B",
-  "slug": "eva-unit-01/eva-qwen-2.5-14b",
+  "short_name": "Grok 2 mini",
+  "slug": "x-ai/grok-2-mini",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3377,10 +3415,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 128000,
+  "context_length": 32768,
   "endpoint": null,
-  "short_name": "o1-preview",
-  "slug": "openai/o1-preview",
+  "short_name": "EVA Qwen2.5 14B",
+  "slug": "eva-unit-01/eva-qwen-2.5-14b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3388,6 +3426,13 @@
   "endpoint": null,
   "short_name": "o1-preview (2024-09-12)",
   "slug": "openai/o1-preview-2024-09-12",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 128000,
+  "endpoint": null,
+  "short_name": "o1-preview",
+  "slug": "openai/o1-preview",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3412,6 +3457,13 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
+  "context_length": 256000,
+  "endpoint": null,
+  "short_name": "Jamba 1.5 Large",
+  "slug": "ai21/jamba-1-5-large",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
   "context_length": 4096,
   "endpoint": null,
   "short_name": "Yi 1.5 34B Chat",
@@ -3423,13 +3475,6 @@
   "endpoint": null,
   "short_name": "Jamba 1.5 Mini",
   "slug": "ai21/jamba-1-5-mini",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 256000,
-  "endpoint": null,
-  "short_name": "Jamba 1.5 Large",
-  "slug": "ai21/jamba-1-5-large",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3456,15 +3501,15 @@
  {
   "context_length": 16384,
   "endpoint": null,
-  "short_name": "Yi Large FC",
-  "slug": "01-ai/yi-large-fc",
+  "short_name": "Yi Vision",
+  "slug": "01-ai/yi-vision",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 16384,
   "endpoint": null,
-  "short_name": "Yi Vision",
-  "slug": "01-ai/yi-vision",
+  "short_name": "Yi Large FC",
+  "slug": "01-ai/yi-large-fc",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3475,13 +3520,6 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 127072,
-  "endpoint": null,
-  "short_name": "Llama 3.1 Sonar 70B Online",
-  "slug": "perplexity/llama-3.1-sonar-large-128k-online",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
   "context_length": 1000000,
   "endpoint": null,
   "short_name": "Gemini 1.5 Pro Experimental",
@@ -3489,10 +3527,10 @@
   "updated_at": "2025-04-04T21:52:38.837881Z"
  },
  {
-  "context_length": 256000,
+  "context_length": 127072,
   "endpoint": null,
-  "short_name": "Codestral Mamba",
-  "slug": "mistralai/codestral-mamba",
+  "short_name": "Llama 3.1 Sonar 70B Online",
+  "slug": "perplexity/llama-3.1-sonar-large-128k-online",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3500,6 +3538,13 @@
   "endpoint": null,
   "short_name": "Dolphin Llama 3 70B 🐬",
   "slug": "cognitivecomputations/dolphin-llama-3-70b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 256000,
+  "endpoint": null,
+  "short_name": "Codestral Mamba",
+  "slug": "mistralai/codestral-mamba",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3512,15 +3557,15 @@
  {
   "context_length": 16384,
   "endpoint": null,
-  "short_name": "Hermes 2 Theta 8B",
-  "slug": "nousresearch/hermes-2-theta-llama-3-8b",
+  "short_name": "Magnum 72B",
+  "slug": "alpindale/magnum-72b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
   "context_length": 16384,
   "endpoint": null,
-  "short_name": "Magnum 72B",
-  "slug": "alpindale/magnum-72b",
+  "short_name": "Hermes 2 Theta 8B",
+  "slug": "nousresearch/hermes-2-theta-llama-3-8b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3580,17 +3625,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 28000,
+  "context_length": 32768,
   "endpoint": null,
-  "short_name": "Llama3 Sonar 70B Online",
-  "slug": "perplexity/llama-3-sonar-large-32k-online",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 128000,
-  "endpoint": null,
-  "short_name": "DeepSeek V2.5",
-  "slug": "deepseek/deepseek-chat-v2.5",
+  "short_name": "Llama3 Sonar 70B",
+  "slug": "perplexity/llama-3-sonar-large-32k-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3608,17 +3646,17 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32768,
+  "context_length": 28000,
   "endpoint": null,
-  "short_name": "Llama3 Sonar 70B",
-  "slug": "perplexity/llama-3-sonar-large-32k-chat",
+  "short_name": "Llama3 Sonar 70B Online",
+  "slug": "perplexity/llama-3-sonar-large-32k-online",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 8192,
+  "context_length": 128000,
   "endpoint": null,
-  "short_name": "Llama 3 8B (Base)",
-  "slug": "meta-llama/llama-3-8b",
+  "short_name": "DeepSeek V2.5",
+  "slug": "deepseek/deepseek-chat-v2.5",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3626,6 +3664,13 @@
   "endpoint": null,
   "short_name": "Llama 3 70B (Base)",
   "slug": "meta-llama/llama-3-70b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 8192,
+  "endpoint": null,
+  "short_name": "Llama 3 8B (Base)",
+  "slug": "meta-llama/llama-3-8b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3645,13 +3690,6 @@
  {
   "context_length": 32768,
   "endpoint": null,
-  "short_name": "Qwen 1.5 110B Chat",
-  "slug": "qwen/qwen-110b-chat",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 32768,
-  "endpoint": null,
   "short_name": "Qwen 1.5 72B Chat",
   "slug": "qwen/qwen-72b-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
@@ -3659,8 +3697,8 @@
  {
   "context_length": 32768,
   "endpoint": null,
-  "short_name": "Qwen 1.5 32B Chat",
-  "slug": "qwen/qwen-32b-chat",
+  "short_name": "Qwen 1.5 110B Chat",
+  "slug": "qwen/qwen-110b-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3673,8 +3711,8 @@
  {
   "context_length": 32768,
   "endpoint": null,
-  "short_name": "Qwen 1.5 7B Chat",
-  "slug": "qwen/qwen-7b-chat",
+  "short_name": "Qwen 1.5 32B Chat",
+  "slug": "qwen/qwen-32b-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3682,6 +3720,13 @@
   "endpoint": null,
   "short_name": "Qwen 1.5 4B Chat",
   "slug": "qwen/qwen-4b-chat",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 32768,
+  "endpoint": null,
+  "short_name": "Qwen 1.5 7B Chat",
+  "slug": "qwen/qwen-7b-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3856,22 +3901,15 @@
  {
   "context_length": 10000,
   "endpoint": null,
-  "short_name": "RWKV v5 3B AI Town",
-  "slug": "recursal/rwkv-5-3b-ai-town",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 10000,
-  "endpoint": null,
   "short_name": "RWKV v5 World 3B",
   "slug": "rwkv/rwkv-5-world-3b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32768,
+  "context_length": 10000,
   "endpoint": null,
-  "short_name": "StripedHyena Nous 7B",
-  "slug": "togethercomputer/stripedhyena-nous-7b",
+  "short_name": "RWKV v5 3B AI Town",
+  "slug": "recursal/rwkv-5-3b-ai-town",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3882,31 +3920,17 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
+  "context_length": 32768,
+  "endpoint": null,
+  "short_name": "StripedHyena Nous 7B",
+  "slug": "togethercomputer/stripedhyena-nous-7b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
   "context_length": 4096,
   "endpoint": null,
   "short_name": "Psyfighter v2 13B",
   "slug": "koboldai/psyfighter-13b-2",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 4096,
-  "endpoint": null,
-  "short_name": "Yi 34B (base)",
-  "slug": "01-ai/yi-34b",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 4096,
-  "endpoint": null,
-  "short_name": "Yi 34B Chat",
-  "slug": "01-ai/yi-34b-chat",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 4096,
-  "endpoint": null,
-  "short_name": "Yi 6B (base)",
-  "slug": "01-ai/yi-6b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3919,8 +3943,29 @@
  {
   "context_length": 4096,
   "endpoint": null,
+  "short_name": "Yi 6B (base)",
+  "slug": "01-ai/yi-6b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 4096,
+  "endpoint": null,
   "short_name": "Hermes 2 Vision 7B (alpha)",
   "slug": "nousresearch/nous-hermes-2-vision-7b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 4096,
+  "endpoint": null,
+  "short_name": "Yi 34B Chat",
+  "slug": "01-ai/yi-34b-chat",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 4096,
+  "endpoint": null,
+  "short_name": "Yi 34B (base)",
+  "slug": "01-ai/yi-34b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -3959,6 +4004,13 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
+  "context_length": 100000,
+  "endpoint": null,
+  "short_name": "Claude Instant v1.1",
+  "slug": "anthropic/claude-instant-1.1",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
   "context_length": 200000,
   "endpoint": null,
   "short_name": "Claude v2.1",
@@ -3970,13 +4022,6 @@
   "endpoint": null,
   "short_name": "Claude v2",
   "slug": "anthropic/claude-2",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 100000,
-  "endpoint": null,
-  "short_name": "Claude Instant v1.1",
-  "slug": "anthropic/claude-instant-1.1",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4092,10 +4137,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 32767,
+  "context_length": 8192,
   "endpoint": null,
-  "short_name": "GPT-4 32k",
-  "slug": "openai/gpt-4-32k",
+  "short_name": "Mythalion 13B",
+  "slug": "pygmalionai/mythalion-13b",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4106,17 +4151,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 8192,
+  "context_length": 32767,
   "endpoint": null,
-  "short_name": "CodeLlama 34B Instruct",
-  "slug": "meta-llama/codellama-34b-instruct",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 4096,
-  "endpoint": null,
-  "short_name": "CodeLlama 34B v2",
-  "slug": "phind/phind-codellama-34b",
+  "short_name": "GPT-4 32k",
+  "slug": "openai/gpt-4-32k",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4129,29 +4167,22 @@
  {
   "context_length": 4096,
   "endpoint": null,
+  "short_name": "CodeLlama 34B v2",
+  "slug": "phind/phind-codellama-34b",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 8192,
+  "endpoint": null,
+  "short_name": "CodeLlama 34B Instruct",
+  "slug": "meta-llama/codellama-34b-instruct",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 4096,
+  "endpoint": null,
   "short_name": "Zephyr 7B",
   "slug": "huggingfaceh4/zephyr-7b-beta",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 100000,
-  "endpoint": null,
-  "short_name": "Claude v2.0",
-  "slug": "anthropic/claude-2.0",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 100000,
-  "endpoint": null,
-  "short_name": "Claude Instant v1",
-  "slug": "anthropic/claude-instant-1",
-  "updated_at": "2025-03-28T03:20:30.853469Z"
- },
- {
-  "context_length": 100000,
-  "endpoint": null,
-  "short_name": "Claude v1",
-  "slug": "anthropic/claude-1",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4164,15 +4195,29 @@
  {
   "context_length": 100000,
   "endpoint": null,
+  "short_name": "Claude Instant v1",
+  "slug": "anthropic/claude-instant-1",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 100000,
+  "endpoint": null,
+  "short_name": "Claude v2.0",
+  "slug": "anthropic/claude-2.0",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 100000,
+  "endpoint": null,
   "short_name": "Claude Instant v1.0",
   "slug": "anthropic/claude-instant-1.0",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 9216,
+  "context_length": 100000,
   "endpoint": null,
-  "short_name": "PaLM 2 Chat",
-  "slug": "google/palm-2-chat-bison",
+  "short_name": "Claude v1",
+  "slug": "anthropic/claude-1",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4183,10 +4228,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 4096,
+  "context_length": 9216,
   "endpoint": null,
-  "short_name": "Llama 2 13B Chat",
-  "slug": "meta-llama/llama-2-13b-chat",
+  "short_name": "PaLM 2 Chat",
+  "slug": "google/palm-2-chat-bison",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4197,10 +4242,10 @@
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
-  "context_length": 4095,
+  "context_length": 4096,
   "endpoint": null,
-  "short_name": "GPT-3.5 Turbo (older v0301)",
-  "slug": "openai/gpt-3.5-turbo-0301",
+  "short_name": "Llama 2 13B Chat",
+  "slug": "meta-llama/llama-2-13b-chat",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  },
  {
@@ -4208,6 +4253,13 @@
   "endpoint": null,
   "short_name": "GPT-3.5 Turbo 16k",
   "slug": "openai/gpt-3.5-turbo-0125",
+  "updated_at": "2025-03-28T03:20:30.853469Z"
+ },
+ {
+  "context_length": 4095,
+  "endpoint": null,
+  "short_name": "GPT-3.5 Turbo (older v0301)",
+  "slug": "openai/gpt-3.5-turbo-0301",
   "updated_at": "2025-03-28T03:20:30.853469Z"
  }
 ]
