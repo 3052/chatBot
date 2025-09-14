@@ -56,6 +56,7 @@ func main() {
       panic(err)
    }
 }
+
 func (c *chatBot) get_md(name string) error {
    data, err := os.ReadFile(name)
    if err != nil {
